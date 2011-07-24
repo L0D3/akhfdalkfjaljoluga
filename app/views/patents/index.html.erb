@@ -1,0 +1,21 @@
+<h1>Listing patents</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @patents.each do |patent| %>
+  <tr>
+    <td><%= link_to 'Show', patent %></td>
+    <td><%= link_to 'Edit', edit_patent_path(patent) %></td>
+    <td><%= link_to 'Destroy', patent, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Patent', new_patent_path %>

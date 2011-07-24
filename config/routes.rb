@@ -1,4 +1,12 @@
 PatverV1::Application.routes.draw do
+  resources :bills
+
+  resources :fees
+
+  resources :users
+
+  resources :patents
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

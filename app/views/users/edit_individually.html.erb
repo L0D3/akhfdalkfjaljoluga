@@ -1,0 +1,11 @@
+<%title "Für folgende Personen müssen noch notwendige Informationen nachgetragen werden!"%>
+<%form_tag update_individually_users_path, :method=>:put do %>
+  <%for user in @users%>
+    <%fields_for "users[]",user do |f|%>
+      <h2><%=h user.name%></h1>
+      <%=render "user",:f=>f%>
+    _____________________________________________________________________________________
+  <%end%>
+  <%end%>
+  <p><%=submit_tag "Speichern"%></p>
+<%end%>

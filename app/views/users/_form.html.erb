@@ -1,0 +1,44 @@
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+   <p>
+  <%= f.label :name%><br/>
+  <%= f.text_field :name %>
+  </p>
+  <p>
+  <%= f.label :Typ %><br/>
+  <%= f.text_field :typ %>
+  </p>
+  <p>
+  <%= f.label :Position %><br/>
+  <%= f.text_field :position%>
+  </p>
+  <p>
+  <%= f.label :Straße%><br/>
+  <%= f.text_field :straße%>
+  </p>
+  <p>
+  <%= f.label :Plz%><br/>
+  <%= f.text_field :plz%>
+  </p>
+  <p>
+  <%= f.label :Telefon%><br/>
+  <%= f.text_field :telefon%>
+  </p>
+  <p>
+  <%= f.label :Fax%><br/>
+  <%= f.text_field :fax%>
+  </p>
+  <p>
+  <%= f.label :Email %><br/>
+  <%= f.text_field :email %>
+  </p>
+  <p>
+  <%= f.label :Ansprechpartner%><br/>
+  <%= f.collection_select :ansprechpartner_id, User.all,:id,:name,{:include_blank=>true}%>
+  </p>
+ 
+  <p>
+  <%=f.submit buttonlabel%>
+  </p>
+<% end %>
+

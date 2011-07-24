@@ -1,0 +1,11 @@
+<p> Name   <%= h @user.name%></p>
+<p> Straße    <%= h @user.straße%></p>
+<p> Email     <%= h @user.email%></p>
+<p> PLZ       <%= h @user.plz%></p>
+<p> Telefon   <%= h @user.telefon%></p>
+<p> Fax       <%= h @user.fax%></p>
+<p> Position  <%= h @user.position%></p>
+<p> Typ       <%= h @user.typ%></p>
+<p> Ansprechpartner: <%= h @user.ansprechpartner.name unless @user.ansprechpartner.blank?%></p>
+<p> <%= link_to 'Edit', edit_user_path(@user) %> 
+| <%= link_to 'Back', users_path %></p>

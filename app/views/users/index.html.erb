@@ -1,0 +1,21 @@
+<%title "Personen"%>
+<table class=mytable>
+  <tr>
+    <th><%=sortable "Name"%></th>
+    <th><%=sortable "Email"%></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% for user in @users %>
+  <tr>
+    <td><%= link_to user.name, user%></td>
+    <td><%= h  user.email%></td>
+    <td><%= link_to '', user %></td>
+    <td><%= link_to '', user, :confirm => 'Wirklich löschen?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Person hinzufügen', new_user_path %>
