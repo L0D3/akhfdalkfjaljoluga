@@ -1,0 +1,52 @@
+<h1>Protocoll for Patent: <%=Patent.find(@patent_id).internaktenzeichen%></h1>
+<table>
+  <tr>
+    <th>Time</th>
+    <th>Comment</th>
+  </tr>
+
+<% @transactions.each do |patent_protocol| %>
+  <tr>
+    <td><%=h patent_protocol.time %></td>
+    <td><%=h patent_protocol.comment%></td>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+<% form_for(@patent_protocol) do |f| %>
+  <%= f.error_messages %>
+  <%=f.hidden_field :patent_id , :value =>@patent_id%>     
+  <p>
+    <%= f.label :time %><br />
+    <%= f.date_select :time %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%=text_field_with_auto_complete :patent_protocol, :comment, {},{:url=>formatted_patent_protocols_path(:js),:method=>:get, :param_name=>'search'}%>
+ 
+  </p>
+  <p>
+<p>
+  <%= f.label "Status"%><br/>
+  <%= select_tag "new_status", options_for_select(status_hash,@patent_status) %>
+  </p>
+  <p>
+  <%= f.label "Rechnung bezahlt: "%>
+  <%if @rechnung_bezahlt%>
+    <%= check_box_tag "rechnung_bezahlt",true,true%>
+  <%else%>
+    <%= check_box_tag "rechnung_bezahlt"%>
+  <%end%>
+
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', patent_protocols_path %> |
+<%= link_to 'Übersicht drucken', patent_protocols_path %>

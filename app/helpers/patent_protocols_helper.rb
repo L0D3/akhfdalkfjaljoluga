@@ -1,0 +1,2 @@
+module PatentProtocolsHelper
+end

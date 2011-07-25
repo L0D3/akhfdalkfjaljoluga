@@ -1,0 +1,13 @@
+<p>
+  <b>Time:</b>
+  <%=h @patent_protocol.time %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%=h @patent_protocol.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_patent_protocol_path(@patent_protocol) %> |
+<%= link_to 'Back', patent_protocols_path %>

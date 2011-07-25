@@ -1,5 +1,51 @@
-<h1>New bill</h1>
+<table>
+  <tr>
+    <th>Datum</th>
+    <th>Rechnungsnummer</th>
+    <th>Anmelder</th>
+  </tr>
 
-<%= render 'form' %>
+<% @bills.each do |bill| %>
+  <tr>
+    <td><%=date bill.datum %></td>
+    <td><%=h bill.rechnungsnummer %></td>
+    <td><%=h bill.user.name unless bill.user.nil?%></td>
+    <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
+    <td><%= link_to 'Destroy', bill, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Drucken', :action=>"pdf_rechnung", :id=>bill %></td>
+  </tr>
+<% end %>
+</table>
+
+
+
+
+
+<h1>Rechnung hinzufügen</h1>
+
+<% form_for(@bill) do |f| %>
+ <%=f.hidden_field :patent_id , :value =>@patent_id%>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :datum %><br />
+    <%= f.date_select :datum %>
+  </p>
+  <p>
+    <%= f.label :rechnungsnummer %><br />
+    <%= f.text_field :rechnungsnummer %>
+  </p>
+  <%-if @patent.submitters.size>1%>
+<%=f.label :user%>
+<%=f.collection_select :user ,@patent.submitters,:id,:name%>
+<%else%>
+  <%=f.hidden_field :user_id , :value =>@patent.submitters.first.id%>
+<%end%>
+ 
+ 
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
 
 <%= link_to 'Back', bills_path %>

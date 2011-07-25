@@ -2,7 +2,7 @@ class FeesController < ApplicationController
   # GET /fees
   # GET /fees.xml
   def index
-    @fees = Fee.all
+    @fees = Fee.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +44,8 @@ class FeesController < ApplicationController
 
     respond_to do |format|
       if @fee.save
-        format.html { redirect_to(@fee, :notice => 'Fee was successfully created.') }
+        flash[:notice] = 'Fee was successfully created.'
+        format.html { redirect_to fees_path}
         format.xml  { render :xml => @fee, :status => :created, :location => @fee }
       else
         format.html { render :action => "new" }
@@ -60,7 +61,8 @@ class FeesController < ApplicationController
 
     respond_to do |format|
       if @fee.update_attributes(params[:fee])
-        format.html { redirect_to(@fee, :notice => 'Fee was successfully updated.') }
+        flash[:notice] = 'Fee was successfully updated.'
+        format.html { redirect_to fees_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

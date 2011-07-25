@@ -1,0 +1,23 @@
+<%title "Transaktionen"%>
+<table class=mytable>
+  <tr>
+    <th>Datum</th>
+    <th>Patent</th>
+    <th>Titel der Anmeldung</th>
+    <th>Transaction</th>
+  </tr>
+
+<% @patent_protocols.each do |patent_protocol| %>
+  <tr>
+    <td><%=h patent_protocol.time %></td>
+    <td><%=link_to Patent.find(patent_protocol.patent_id).internaktenzeichen, new_patent_protocol_path (:patent=>patent_protocol.patent_id) %></td>
+    <td><%=truncate (Patent.find(patent_protocol.patent_id).titel,:length=>80)%>
+    <td><%=h patent_protocol.comment%></td>
+    <td>  <%= link_to 'Löschen', patent_protocol, :confirm => 'Wirklich löschen?', :method => :delete %>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+

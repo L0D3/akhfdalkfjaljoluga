@@ -1,0 +1,65 @@
+pdf.font("Times-Roman",  :size => 11)
+pdf.fill_rectangle [10,750], 10, 10 
+pdf.fill_rectangle [25,750], 10, 10 
+pdf.fill_rectangle [40,750], 10, 10 
+pigs = "#{RAILS_ROOT}/public/images/logo.png" 
+pdf.image pigs, :at => [380,750], :scale => 0.3
+
+ pdf.bounding_box [20,670], :width => 300 do
+    pdf.font ("Times-Roman",:size=>9) do
+      pdf.text  "<u>ips, Großwaldstraße 31, 66571 Eppelborn</u>", :inline_format=>true
+    end
+    pdf.font("Times-Roman",:size=>14) do
+      pdf.text  "Patentverwertungsagentur
+      Campus Universität 66123 Saarbrücken
+
+      Per Fax an 0681 9386903"
+    end
+ end
+ pdf.bounding_box [20,555], :width => 300 do
+      pdf.text "Ihr Zeichen"
+    pdf.font ("Times-Roman",:size=>11) do
+      pdf.text "<b>"+@patent.ihrzeichen+"</b>",:inline_format => true
+    end
+  end 
+
+ pdf.bounding_box [200,555], :width => 300 do
+    pdf.text "Unser Zeichen"
+    pdf.font ("Times-Roman",:size=>9) do
+      pdf.text "<b>"+@patent.internaktenzeichen+"</b>",:inline_format => true
+    end
+ end
+
+ pdf.bounding_box [380,555], :width => 300 do
+    pdf.text "Datum"
+    pdf.font ("Times-Roman",:size=>9) do
+      pdf.text "<b>"+Time.now.strftime("%d.%m.%Y")+"</b>",:inline_format => true
+    end
+ end
+
+
+
+
+pdf.fill_color "D0D0D0"
+pdf.fill_rectangle [20,52], 503, 52 
+pdf.fill_color "000000"
+ pdf.bounding_box [23,49], :width =>250 do
+   pdf.font ("Times-Roman",:size=>9) do
+      pdf.text "ips UG (haftungsbeschränkt)
+   Wilhelm Lahann (Geschäftsführer)
+   Großwaldstraße 31, 66571 Eppelborn
+   Bank1Saar, BLZ 59190000, Konto 111626006
+   Ust.ID.:030/111/01126"
+   end
+  end
+
+pdf.bounding_box [420,49], :width =>250 do
+   pdf.font ("Times-Roman",:size=>9) do
+   pdf.text "Tel./Fax 06881 962256
+   wilhelm.lahann@ips-ug.de
+   Sitz Eppelborn/Habach
+   HRB 18595"
+   end
+  end
+
+

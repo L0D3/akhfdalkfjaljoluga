@@ -1,6 +1,20 @@
 <h1>Editing bill</h1>
 
-<%= render 'form' %>
+<% form_for(@bill) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :datum %><br />
+    <%= f.date_select :datum %>
+  </p>
+  <p>
+    <%= f.label :rechnungsnummer %><br />
+    <%= f.text_field :rechnungsnummer %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
 
 <%= link_to 'Show', @bill %> |
 <%= link_to 'Back', bills_path %>

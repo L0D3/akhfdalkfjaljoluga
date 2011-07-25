@@ -1,0 +1,17 @@
+<%= form_for(@patent_protocol) do |f| %>
+  <% if @patent_protocol.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patent_protocol.errors.count, "error") %> prohibited this patent_protocol from being saved:</h2>
+
+      <ul>
+      <% @patent_protocol.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

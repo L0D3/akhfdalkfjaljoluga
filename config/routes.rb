@@ -1,4 +1,6 @@
 PatverV1::Application.routes.draw do
+  resources :patent_protocols
+
   resources :bills
 
   resources :fees

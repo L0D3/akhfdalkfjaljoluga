@@ -20,10 +20,13 @@ class BillsController < ApplicationController
       format.xml  { render :xml => @bill }
     end
   end
-
+  
   # GET /bills/new
   # GET /bills/new.xml
   def new
+    @patent_id=params[:patent]
+    @patent=Patent.find(@patent_id)   
+    @bills = Bill.find_all_by_patent_id(@patent_id)
     @bill = Bill.new
 
     respond_to do |format|
@@ -44,7 +47,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.save
-        format.html { redirect_to(@bill, :notice => 'Bill was successfully created.') }
+        format.html { redirect_to(new_bill_path(:patent=>@bill.patent_id)) }
         format.xml  { render :xml => @bill, :status => :created, :location => @bill }
       else
         format.html { render :action => "new" }
@@ -78,6 +81,15 @@ class BillsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(bills_url) }
       format.xml  { head :ok }
+    end
+  end
+  def pdf_rechnung
+    @bill=Bill.find(params[:id])
+    @datum=@bill.datum
+    @patent=@bill.patent
+    @rechnungsnummer=@bill.rechnungsnummer
+    respond_to do |format|
+    format.pdf
     end
   end
 end

@@ -1,15 +1,8 @@
-<% form_for(@fee) do |f| %>
+<% form_for(fee) do |f| %>
   <%= f.error_messages %>
   <p>
-  <%= f.label "Nation"%>
-<%- if buttonlabel=="update"%>
-  <%= f.text_field  :country, :disabled=>true %>
-<%else%>
-  <%= f.text_field  :country %>
-<%end%>
+  <u><b><%= h  fee.country %></b></u>
   </p>
-  <b>Jahresgebühren:</b>
-  <br />
   <table>
     <tr>
       <th>1</th>
@@ -60,6 +53,9 @@
       <td><%=f.text_field :year_20,:size=>5%></td>
     </tr>
   </table>
-    <%= f.submit buttonlabel %>
+
+  <%= button_to'Löschen', fee, :confirm => 'Wirklich löschen?', :method => :delete %>
+  <%= f.submit "editieren"%> 
+    <br/>
 <% end %>
 
