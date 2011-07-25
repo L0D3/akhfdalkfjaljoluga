@@ -1,4 +1,5 @@
-PatverV1::Application.routes.draw do |map|
+PatverV1::Application.routes.draw do 
+  root :to => 'patents#index'
   resources :patent_protocols
   resources :bills do
     collection do
@@ -29,6 +30,4 @@ PatverV1::Application.routes.draw do |map|
       put :update_submissions
     end
   end
-  map.root :controller=>"patents", :action=>"index"
-  root :to => 'patents#index'
 end
