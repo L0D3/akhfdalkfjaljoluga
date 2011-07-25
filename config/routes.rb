@@ -30,5 +30,5 @@ PatverV1::Application.routes.draw do |map|
     end
   end
   map.root :controller=>"patents", :action=>"index"
-  root :to =>"patents#index"
+  root :to => 'patents#index'
 end
