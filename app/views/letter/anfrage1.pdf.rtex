@@ -1,0 +1,81 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Briefvorlage für einen privaten Brief (benutzt KOMA-Script)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Verwendung der Klasse scrlttr2
+\documentclass[enlargefirstpage
+	%, parskip=true % aktivieren, wenn Absätze nicht eingerückt werden sollen
+	]{scrlttr2}
+%
+% benutzte Pakete einbinden
+\usepackage[ngerman]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{scrpage2}
+\usepackage{graphicx}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Anpassungen erforderlich
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Informationen über den Schreiber
+\setkomavar{fromname}{Max Mustermann}
+\setkomavar{fromaddress}{Hauptstr. 1, 12345 Beispielhausen}
+\setkomavar{fromphone}{01234 5678910}
+\setkomavar{fromurl}{www.beispiel.de}
+\setkomavar{fromemail}{nickname@host.de}
+\setkomavar{place}{Beispielhausen}
+\setkomavar{fromlogo}{\includegraphics[width=4cm]{/tmp/ipslogo.png}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Beginn des Dokumentes
+\begin{document}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% nur bei Bedarf verändern
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Kopf und Fußzeile der ersten Seite
+\firsthead{
+  \usekomavar{fromlogo}
+}
+\firstfoot{\rule{\textwidth}{0.5pt}
+	\begin{center}
+	\textsf{\usekomavar{fromname} | \usekomavar{fromaddress}}
+	\\\textsf{\usekomavar{fromphone} | \usekomavar{fromemail}}
+	\end{center}}
+\setkomavar{location}{
+\begin {center}
+dadadaöldaödkaö\\
+  faöfkaöfkaö\\
+  dadadada\\
+  dadad\\
+\end {center}
+}
+% Kopf und Fußzeile der Folgeseiten
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inhalte des Briefes einfügen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Empfänger
+\begin{letter}{Empfänger} % den Wert Empfänger nicht verändern
+\setkomavar{toname}{Vorname Nachname}
+\setkomavar{toaddress}{Straße \\ Ort}
+%
+% Betreff
+\setkomavar{subject}{Hier kann eine Betreffzeile eingefügt werden}
+\setkomavar{yourref}{ihr zeichen}
+\setkomavar{myref}{unser zeichen}
+%
+% Grußformel
+\opening{Sehr geehrter Adressat,}
+%
+% Brieftext
+<%= @patent.anmeldedatum%>
+Dies ist ein Blindtext. An ihm lassen sich verschiedene Effekte zeigen. Dies ist ein Blindtext. An ihm lassen sich verschiedene Effekte zeigen. Dies ist ein Blindtext. An ihm lassen sich verschiedene Effekte zeigen. Dies ist ein Blindtext. An ihm lassen sich verschiedene Effekte zeigen. Dies ist ein Blindtext. An ihm lassen sich verschiedene Effekte zeigen.
+%
+% Grußformel
+\closing{Mit freundlichen Grüßen,}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Ende des Briefinhaltes und des Dokumentes
+\end{letter}
+\end{document}

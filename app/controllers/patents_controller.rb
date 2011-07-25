@@ -10,12 +10,7 @@ class PatentsController < ApplicationController
   # GET /patents/1.xml
   def show
     @patent = Patent.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @patent }
-    end
-  end
+ end
     # GET /patents/new
   # GET /patents/new.xml
   def new
@@ -29,12 +24,11 @@ class PatentsController < ApplicationController
   end
   def pdf_patent_tabelle
     @patents=Patent.all
-    prawnto :prawn=>{:page_layout=>:landscape}, :inline=>false
     respond_to do |format|
       format.pdf
     end
+    end
 
-  end
   def pdf_anfrage_eu
     pdf_help  
   end
@@ -58,9 +52,6 @@ class PatentsController < ApplicationController
   end
   def pdf_rechnung_de
     pdf_help
-  end
-  def pdf_patentübersicht
-    pdf_help  
   end
   def pdf_patentliste
   end
@@ -144,7 +135,6 @@ class PatentsController < ApplicationController
     params[:direction] ||"asc"
   end
   def pdf_help
-
     prawnto :prawn=>{:bottom_margin=>2}, :inline=>false
     @patent=Patent.find(params[:id])
     respond_to do |format|

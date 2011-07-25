@@ -1,21 +1,38 @@
-<h1>Listing patents</h1>
-
-<table>
+<%title "Patente"%>
+<table class=mytable >
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Az. ips </th>
+    <th>Az. amtl.</th>
+    <th>Az. Kunde</th>
+    <th>Anmeldedatum</th>
+    <th>Anmelder</th>
+    <th>Titel der Anmeldung</th>
+    <th>Erfinder</th>
+    <th>Zustand</th>
+    <th>Letzte Änderung</th>
+    <th>Rechnung bezahlt?</th>
   </tr>
-
-<% @patents.each do |patent| %>
-  <tr>
-    <td><%= link_to 'Show', patent %></td>
-    <td><%= link_to 'Edit', edit_patent_path(patent) %></td>
-    <td><%= link_to 'Destroy', patent, :confirm => 'Are you sure?', :method => :delete %></td>
+  <%for patent in @patents%> 
+    <tr valign="top" class=<%=patent.status_in_color%> onClick="location.href='<%= patent_path(patent) %>'"> 
+      <td><%=h patent.internaktenzeichen %></td> 
+    <td><%= h(patent.amtlaktenzeichen)%></td>
+    <td><%= h(patent.ihrzeichen)%></td>
+    <td><%= h(patent.anmeldedatum)%></td>
+    <td><%= h(patent.submitter_names)%></td>
+    <td><%= h(patent.titel)%></td>
+    <td><%= h(patent.inventor_names)%></td>
+    <td><%=h (patent.status_in_string)%></td>
+    <td><%=h (patent.letzte_änderung.strftime("%d,%m,%Y"))unless patent.letzte_änderung.blank?%></td>
+    <td><%=h patent.rechnung_bezahlt%></td>
   </tr>
 <% end %>
 </table>
-
+<b>Sortieren nach:<b> <%= sortable "amtlAktenzeichen"%>,<%= sortable "Titel"%>,<%= sortable "internAktenzeichen","Internes Aktenzeichen"%>,<%= sortable "Anmeldedatum"%>
 <br />
 
-<%= link_to 'New Patent', new_patent_path %>
+<br />
+<%= link_to 'europäisches Patent hinzufügen', new_patent_path (:nation=>"Europa")%> | 
+<%= link_to 'deutsches Patent hinzufügen', new_patent_path (:nation=>"Deutschland")%>
+<br />
+<br />
+<%= link_to 'Übersicht drucken',:action=>"pdf_patent_tabelle",:format=>:pdf %>

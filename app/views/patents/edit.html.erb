@@ -1,6 +1,3 @@
-<h1>Editing patent</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @patent %> |
+<%@page_title="Patent editieren"%>
+<%= render :partial => 'eu', :locals =>{:action =>'update', :buttonlabel => "Update"} %>
 <%= link_to 'Back', patents_path %>
