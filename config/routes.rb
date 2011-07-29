@@ -1,4 +1,6 @@
 PatverV1::Application.routes.draw do 
+  get "sessions/new"
+
   root :to => 'patents#index'
   resources :patent_protocols
   resources :bills do

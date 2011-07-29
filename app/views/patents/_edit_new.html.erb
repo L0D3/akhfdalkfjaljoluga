@@ -1,0 +1,108 @@
+
+<div id="auswahlmenu">
+  <b>Bearbeiten</b>   <br />
+ 
+  <li>  <%= link_to 'Back', patents_path %></li>
+  <li><%= f.submit buttonlabel%></li>
+ </div>
+<div id="mitte">
+
+<%= f.error_messages %>
+<table class=normal>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>unser Aktenzeichen </td> 
+      <td><%= f.text_field :internaktenzeichen %></td>
+    </tr>
+    <tr>
+      <td>
+        Anmeldedatum: 
+      </td>
+      <td>
+<%= f.date_select:anmeldedatum,:use_month_numbers=>true, :order=>[:day,:month,:year],:start_year=>Time.now.year-20,:end_year=>Time.now.year %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        amtl. Aktenzeichen: 
+      </td>
+      <td>
+<%= f.text_field :amtlaktenzeichen%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Titel:
+      </td>
+      <td>
+<%= f.text_field :titel %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Anmelder: 
+      </td>
+      <td>
+<%=raw (text_field_with_auto_complete :patent, :submitter_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search'})%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ihr Aktenzeichen: 
+      </td>
+      <td>
+<%= f.text_field :ihrzeichen%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Erfinder: 
+      </td>
+      <td>
+<%=text_field_with_auto_complete :patent, :inventor_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search'}%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Status:
+      </td>
+      <td>
+<%= f.select(  "status", { "aktiv" => "1", "Anfrage" => "2","1.Erinnerung"=>"3","2.Erinnerung"=>"4","Rechnung gestellt"=>"5","Jahresgebühr zu veranlassen"=>"6","inaktiv"=>7}) %>
+      </td>
+    </tr>
+     <tr>
+      <td>
+        Rechtsverlust: 
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Vertreter: 
+      </td>
+      <td>
+<%=text_field_with_auto_complete :patent, :procurator_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search'}%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>
+<% if buttonlabel=="Update"%>
+    <tr>
+      <td>
+        Nationalität:
+      </td>
+      <td>
+  <%= f.text_field :nationalität %>
+      </td>
+    </tr>
+ <%end%>
+</div> 
+

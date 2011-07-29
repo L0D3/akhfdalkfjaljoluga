@@ -1,48 +1,9 @@
 <b>Deutsches Patent:</b>
 <% form_for(@patent) do |f| %>
   <%= f.hidden_field :nationalität, :value => "Deutschland" %>
-  <%= f.error_messages %>
-  <p>
-  <%= f.label 'unserZeichen' %><br/>
-  <%= f.text_field :internaktenzeichen %>
-  </p>
-  <p>
-  <%= f.label 'ihrZeichen'%><br/>
-  <%= f.text_field :ihrzeichen %>
-  </p>
-  <p>
-  <%= f.label "amtliches Aktenzeichen" %><br/>
-  <%= f.text_field :amtlaktenzeichen %>
-  </p>
-  <p>
-  <%= f.label "Lizenzbereitschaft" %>
-  <%= f.check_box :lizenzbereitschaft%>
-  </p>
+  <%= render :partial => 'edit_new' ,:locals=>{:f=>f,:buttonlabel=>buttonlabel}%>
+    Lizenzbereitschaft erteilt?     <%= f.check_box :lizenzbereitschaft%>
 
 
-  <p>
-  <%= f.label :titel %><br/>
-  <%= f.text_field :titel %>
-  </p>
-  <p>
-  <%= f.label "anmeldedatum "%> <br/>
-  <%= f.date_select:anmeldedatum,:use_month_numbers=>true, :order=>[:day,:month,:year],:start_year=>Time.now.year-20,:end_year=>Time.now.year %>
-  </p>
-  <p>
-  <%= f.label "Anmelder"%><br/>
-  <%=text_field_with_auto_complete :patent, :submitter_names, {},{:url=>formatted_users_path(:js),:method=>:get, :tokens=>';',:param_name=>'search'}%>
-  </p>
-  <p>
-  <%= f.label "Erfinder"%><br/>
-  <%=text_field_with_auto_complete :patent, :inventor_names, {},{:url=>formatted_users_path(:js),:method=>:get, :tokens=>';',:param_name=>'search'}%>
-  </p>
-  <p>
-  <%= f.label "Vertreter"%><br/>
-  <%=text_field_with_auto_complete :patent, :procurator_names, {},{:url=>formatted_users_path(:js),:method=>:get, :tokens=>';',:param_name=>'search'}%>
-  </p>
-  <%= f.select(  "status", { "aktiv" => "1", "Anfrage" => "2","1.Erinnerung"=>"3","2.Erinnerung"=>"4","Rechnung gestellt"=>"5","Jahresgebühr zu veranlassen"=>"6","inaktiv"=>7}) %>
-  <p>
-  <%= f.submit buttonlabel %>
-  </p>
 <% end %>
 
