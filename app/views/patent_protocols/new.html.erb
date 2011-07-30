@@ -26,7 +26,7 @@
   </p>
   <p>
     <%= f.label :comment %><br />
-    <%=text_field_with_auto_complete :patent_protocol, :comment, {},{:url=>formatted_patent_protocols_path(:js),:method=>:get, :param_name=>'search'}%>
+    <%=text_field_with_auto_complete :patent_protocol, :comment, {},{:url=>patent_protocols_path(:format=>:js),:method=>:get, :param_name=>'search'}%>
  
   </p>
   <p>
