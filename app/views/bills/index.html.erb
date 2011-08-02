@@ -5,7 +5,6 @@
     <th>Datum</th>
     <th>Patent</th>
     <th>Rechnungsnummer</th>
-    <th></th>
   </tr>
 
 <% @bills.each do |bill| %>
@@ -13,7 +12,7 @@
     <td><%=h bill.datum %></td>
     <td><%=(link_to bill.patent.internaktenzeichen, bill.patent )unless bill.patent.nil?%></td>
     <td><%=h bill.rechnungsnummer %></td>
-    <td><%= link_to '', bill, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Löschen', bill, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

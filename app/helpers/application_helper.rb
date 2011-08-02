@@ -11,7 +11,7 @@ module ApplicationHelper
   def date date
     date.strftime("%d,%m,%Y")
   end
-  def date string
+  def string_to_date string
     Date.strptime(string,'%d/%m/%y')
   end
 end
