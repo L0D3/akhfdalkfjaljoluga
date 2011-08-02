@@ -1,5 +1,14 @@
 class Patent < ActiveRecord::Base
 #    validates_presence_of  :Lizenzbereitschaft,  :amtlAktenzeichen, :internAktenzeichen, :Titel 
+  
+  search_methods :gebührenfälligkeit
+
+
+  def date string
+    Date.strptime(string,'%d/%m/%y')
+  end
+
+
   has_many :procurations
   has_many :bills
   has_many :inventions
@@ -13,6 +22,12 @@ class Patent < ActiveRecord::Base
       then self.anmeldedatum.years_since(2).end_of_month
     else  Date.new(Date.today.year,self.anmeldedatum.month,anmeldedatum.day).end_of_month
     end
+  end
+  def sort_by_fälligkeit
+    if gebührenfälligkeit>=Date.today
+      gebührenfälligkeit
+      else gebührenfälligkeit.years_since(1)
+      end
   end
   def ersteerinnerung
   self.gebührenfälligkeit.beginning_of_month.advance(:days=>14)
@@ -173,5 +188,6 @@ end
         end
      end 
  end
+
 end 
 

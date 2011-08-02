@@ -7,6 +7,11 @@ gem 'prawn-layout'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem "meta_where"
+gem "meta_search"
+
+gem 'will_paginate', '3.0.pre2'
+gem "hirb", :group => :development
 
 # Use unicorn as the web server
 # gem 'unicorn'

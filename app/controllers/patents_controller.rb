@@ -3,7 +3,8 @@ class PatentsController < ApplicationController
   # GET /patents
   # GET /patents.xml
   def index
-    @patents=Patent.all(:order=>sort_column+" "+sort_direction)
+    @search = Patent.search(params[:search])
+    @patents = @search.all.sort_by(&:sort_by_fälligkeit).paginate(:per_page=>7,:page=>params[:page])
   end
 
   # GET /patents/1
@@ -128,13 +129,7 @@ class PatentsController < ApplicationController
   end
 
   private 
-  def sort_column
-    params[:sort]|| "Titel" 
-  end
-  def sort_direction
-    params[:direction] ||"asc"
-  end
-  def pdf_help
+    def pdf_help
     prawnto :prawn=>{:bottom_margin=>2}, :inline=>false
     @patent=Patent.find(params[:id])
     respond_to do |format|

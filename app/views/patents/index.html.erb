@@ -1,23 +1,54 @@
 <%title "Patente"%>
+<%= form_for @search do |f| %>
+  <p>
+  <%= f.label "Titel" %>
+  <%= f.text_field :titel_contains%>
+  </p>
+ <p>
+  <%= f.label "Status" %>
+  <%= f.select(  :status_eq,{"aktiv" => "1", "Anfrage" => "2","1.Erinnerung"=>"3","2.Erinnerung"=>"4","Rechnung gestellt"=>"5","Jahresgebühr zu veranlassen"=>"6","inaktiv"=>7},{:include_blank=>true }) %>
+  </p>
+ <p>
+  <%= f.label "Az. ips" %>
+  <%= f.text_field :internaktenzeichen_contains%>
+  </p>
+ <p>
+  <%= f.label "Az. amtl" %>
+  <%= f.text_field :amtlaktenzeichen_contains%>
+  </p>
+ <p>
+  <%= f.label "Az. Kunde" %>
+  <%= f.text_field :ihrzeichen_contains%>
+  </p>
+
+
+
+ <p class="button"><%= f.submit "Search" %></p>
+<% end %>
+<%= will_paginate @patents %>
 <table class=mytable >
+<tr>
+</tr>
   <tr>
-    <th>Az. ips </th>
-    <th>Az. amtl.</th>
-    <th>Az. Kunde</th>
-    <th>Anmeldedatum</th>
-    <th>Anmelder</th>
-    <th>Titel der Anmeldung</th>
-    <th>Erfinder</th>
-    <th>Zustand</th>
-    <th>Letzte Änderung</th>
-    <th>Rechnung bezahlt?</th>
+<th><%= sort_link @search, :internaktenzeichen,"Az. ips"%></th> 
+<th><%=  sort_link @search, :amtlaktenzeichen,"Az. amtl" %></th> 
+<th><%= sort_link @search, :ihrzeichen,"Az. Kunde" %></th>
+<th><%= sort_link @search, :anmeldedatum,"Anmeldedatum"%></th>
+<th><%= sort_link @search, :sort_by_fälligkeit,"Fälligkeit" %></th>
+<th><%= sort_link @search, :submitter_names,"Anmelder" %></th>
+<th><%= sort_link @search, :titel,"Titel der Anmeldung" %></th>
+<th><%= sort_link @search, :inventor_names,"Erfinder" %></th>
+<th><%= sort_link @search, :status,"Zustand" %></th>
+<th><%= sort_link @search, :letzte_änderung,"Letzte Änderung" %></th>
+<th><%= sort_link @search, :rechnung_bezahlt,"Rechnung bezahlt?" %></th>
   </tr>
   <%for patent in @patents%> 
     <tr valign="top" class=<%=patent.status_in_color%> onClick="location.href='<%= patent_path(patent) %>'"> 
       <td><%=h patent.internaktenzeichen %></td> 
     <td><%= h(patent.amtlaktenzeichen)%></td>
     <td><%= h(patent.ihrzeichen)%></td>
-    <td><%= h(patent.anmeldedatum)%></td>
+    <td><%= h(patent.anmeldedatum.strftime("%d,%m,%Y"))%></td>
+    <td><%= h(patent.gebührenfälligkeit.strftime("%d,%m,%Y"))%></td>
     <td><%= h(patent.submitter_names)%></td>
     <td><%= h(patent.titel)%></td>
     <td><%= h(patent.inventor_names)%></td>
@@ -27,8 +58,6 @@
   </tr>
 <% end %>
 </table>
-<b>Sortieren nach:<b> <%= sortable "amtlAktenzeichen"%>,<%= sortable "Titel"%>,<%= sortable "internAktenzeichen","Internes Aktenzeichen"%>,<%= sortable "Anmeldedatum"%>
-<br />
 
 <br />
 <%= link_to 'europäisches Patent hinzufügen', new_patent_path (:nation=>"Europa")%> | 
