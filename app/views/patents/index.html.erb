@@ -47,13 +47,13 @@
       <td><%=h patent.internaktenzeichen %></td> 
     <td><%= h(patent.amtlaktenzeichen)%></td>
     <td><%= h(patent.ihrzeichen)%></td>
-    <td><%= h(patent.anmeldedatum.strftime("%d,%m,%Y"))%></td>
-    <td><%= h(patent.gebührenfälligkeit.strftime("%d,%m,%Y"))%></td>
+    <td><%= date(patent.anmeldedatum)%></td>
+    <td><%= date(patent.gebührenfälligkeit)%></td>
     <td><%= h(patent.submitter_names)%></td>
     <td><%= h(patent.titel)%></td>
     <td><%= h(patent.inventor_names)%></td>
     <td><%=h (patent.status_in_string)%></td>
-    <td><%=h (patent.letzte_änderung.strftime("%d,%m,%Y"))unless patent.letzte_änderung.blank?%></td>
+    <td><%=date (patent.letzte_änderung) unless patent.letzte_änderung.blank?%></td>
     <td><%=h patent.rechnung_bezahlt%></td>
   </tr>
 <% end %>

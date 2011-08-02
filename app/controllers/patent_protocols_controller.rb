@@ -2,7 +2,8 @@ class PatentProtocolsController < ApplicationController
   # GET /patent_protocols
   # GET /patent_protocols.xml
   def index
-    @patent_protocols = PatentProtocol.all
+    @search = PatentProtocol.search(params[:search])
+    @patent_protocols = @search.all.paginate(:per_page=>25,:page=>params[:page])
     @seltransactions=PatentProtocol.find(:all, :conditions=>['comment Like ?',"%#{params[:search]}%"])
   end
 

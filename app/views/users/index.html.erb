@@ -1,8 +1,22 @@
 <%title "Personen"%>
+<%= form_for @search do |f| %>
+  <p>
+  <%= f.label "Name" %>
+  <%= f.text_field :name_contains%>
+  </p>
+  <p>
+  <%= f.label "Email" %>
+  <%= f.text_field :email_contains%>
+  </p>
+
+ <p class="button"><%= f.submit "Search" %></p>
+<% end %>
+
+<%= will_paginate @users%>
 <table class=mytable>
   <tr>
-    <th><%=sortable "Name"%></th>
-    <th><%=sortable "Email"%></th>
+    <th><%=sort_link @search, :name, "Name"%></th>
+    <th><%=sort_link @search, :email, "Email"%></th>
     <th></th>
     <th></th>
   </tr>
@@ -10,8 +24,8 @@
   <tr>
     <td><%= link_to user.name, user%></td>
     <td><%= h  user.email%></td>
-    <td><%= link_to '', user %></td>
-    <td><%= link_to '', user, :confirm => 'Wirklich löschen?', :method => :delete %></td>
+    <td><%= link_to 'editieren', user %></td>
+    <td><%= link_to 'löschen', user, :confirm => 'Wirklich löschen?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

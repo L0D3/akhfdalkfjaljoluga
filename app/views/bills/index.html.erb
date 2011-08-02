@@ -1,15 +1,34 @@
 <%title "Rechnungen"%>
+<%= form_for @search do |f| %>
+  <p>
+  <%= f.label "Datum" %>
+  <%= f.text_field :datum_eq%>
+  </p>
+  <p>
+  <%= f.label "Rechnungsnummer" %>
+  <%= f.text_field :rechnungsnummer_contains%>
+  </p>
+  <p>
+  <%= f.label "Patent" %>
+  <%= f.text_field :with_patents_by_intern%>
+  </p>
 
+
+ <p class="button"><%= f.submit "Search" %></p>
+<% end %>
+
+
+<%= will_paginate @bills%>
 <table class=mytable>
   <tr>
-    <th>Datum</th>
-    <th>Patent</th>
-    <th>Rechnungsnummer</th>
+<th><%= sort_link @search, :datum,"Datum"%></th> 
+<th><%= sort_link @search, :datum,"Patent"%></th> 
+<th><%= sort_link @search, :rechnungsnummer,"Rechnungsnummer"%></th> 
   </tr>
 
 <% @bills.each do |bill| %>
   <tr>
-    <td><%=h bill.datum %></td>
+    <td><%=date bill.datum %></td>
     <td><%=(link_to bill.patent.internaktenzeichen, bill.patent )unless bill.patent.nil?%></td>
     <td><%=h bill.rechnungsnummer %></td>
     <td><%= link_to 'Löschen', bill, :confirm => 'Are you sure?', :method => :delete %></td>

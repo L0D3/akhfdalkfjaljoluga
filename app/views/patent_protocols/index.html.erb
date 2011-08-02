@@ -1,15 +1,35 @@
 <%title "Transaktionen"%>
+<%= form_for @search do |f| %>
+  <p>
+  <%= f.label "Datum" %>
+  <%= f.text_field :time_eq%>
+  </p>
+ <p>
+  <%= f.label "Az. ips" %>
+  <%= f.text_field :with_patents_by_intern%>
+  </p>
+ <p>
+  <%= f.label "Az. amtl" %>
+  <%= f.text_field :with_patents_by_amtl%>
+  </p>
+ <p>
+  <%= f.label "Transaktion" %>
+  <%= f.text_field :comment_contains%>
+  </p>
+ <p class="button"><%= f.submit "Search" %></p>
+<% end %>
+<%= will_paginate @patent_protocols %>
 <table class=mytable>
   <tr>
-    <th>Datum</th>
-    <th>Patent</th>
-    <th>Titel der Anmeldung</th>
-    <th>Transaction</th>
+    <th><%=sort_link @search,:time, "Datum"%></th>
+    <th><%=sort_link @search,:time, "Patent"%></th>
+    <th><%=sort_link @search,:time, "Titel der Anmeldung"%></th>
+    <th><%=sort_link @search,:comment, "Transaction"%></th>
   </tr>
 
 <% @patent_protocols.each do |patent_protocol| %>
   <tr>
-    <td><%=h patent_protocol.time %></td>
+    <td><%=date patent_protocol.time %></td>
     <td><%=link_to Patent.find(patent_protocol.patent_id).internaktenzeichen, new_patent_protocol_path (:patent=>patent_protocol.patent_id) %></td>
     <td><%=truncate (Patent.find(patent_protocol.patent_id).titel,:length=>80)%>
     <td><%=h patent_protocol.comment%></td>

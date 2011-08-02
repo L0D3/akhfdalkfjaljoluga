@@ -2,7 +2,8 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.xml
   def index
-    @bills = Bill.all
+    @search = Bill.search(params[:search])
+    @bills = @search.all.paginate(:per_page=>20,:page=>params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
