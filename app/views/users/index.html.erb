@@ -1,15 +1,22 @@
 <%title "Personen"%>
 <%= form_for @search do |f| %>
-  <p>
-  <%= f.label "Name" %>
-  <%= f.text_field :name_contains%>
-  </p>
-  <p>
-  <%= f.label "Email" %>
-  <%= f.text_field :email_contains%>
-  </p>
-
- <p class="button"><%= f.submit "Search" %></p>
+  <table class=mytable>
+    <tr>
+      <td>
+        <%= f.label "Name" %>
+      </td>
+      <td>
+        <%= f.text_field :name_contains%>
+      </td>
+      <td>
+        <%= f.label "Email" %>
+      </td>
+      <td>
+        <%= f.text_field :email_contains%>
+      </td>
+    </tr>
+  </table>
+  <p class="button"><%= f.submit "Search" %></p>
 <% end %>
 
 <%= will_paginate @users%>

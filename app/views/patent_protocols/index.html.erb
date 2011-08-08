@@ -1,21 +1,36 @@
 <%title "Transaktionen"%>
 <%= form_for @search do |f| %>
-  <p>
-  <%= f.label "Datum" %>
-  <%= f.text_field :time_eq%>
-  </p>
- <p>
-  <%= f.label "Az. ips" %>
-  <%= f.text_field :with_patents_by_intern%>
-  </p>
- <p>
-  <%= f.label "Az. amtl" %>
-  <%= f.text_field :with_patents_by_amtl%>
-  </p>
- <p>
-  <%= f.label "Transaktion" %>
-  <%= f.text_field :comment_contains%>
-  </p>
+  <table class=mytable>
+    <tr>
+      <td>
+        <%= f.label "Datum" %>
+      </td>
+      <td>
+        <%= f.text_field :time_eq%>
+      </td>
+      <td>
+        <%= f.label "Az. ips" %>
+      </td>
+      <td>
+        <%= f.text_field :with_patents_by_intern%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label "Az. amtl" %>
+      </td>
+      <td>
+        <%= f.text_field :with_patents_by_amtl%>
+      </td>
+      <td>
+        <%= f.label "Transaktion" %>
+      </td>
+      <td>
+        <%= f.text_field :comment_contains%>
+      </td>
+    </tr>
+  </table>
+
  <p class="button"><%= f.submit "Search" %></p>
 <% end %>
 <%= will_paginate @patent_protocols %>
@@ -27,17 +42,16 @@
     <th><%=sort_link @search,:comment, "Transaction"%></th>
   </tr>
 
-<% @patent_protocols.each do |patent_protocol| %>
-  <tr>
-    <td><%=date patent_protocol.time %></td>
-    <td><%=link_to Patent.find(patent_protocol.patent_id).internaktenzeichen, new_patent_protocol_path (:patent=>patent_protocol.patent_id) %></td>
-    <td><%=truncate (Patent.find(patent_protocol.patent_id).titel,:length=>80)%>
-    <td><%=h patent_protocol.comment%></td>
-    <td>  <%= link_to 'Löschen', patent_protocol, :confirm => 'Wirklich löschen?', :method => :delete %>
-    
-  </tr>
-<% end %>
-</table>
+  <% @patent_protocols.each do |patent_protocol| %>
+    <tr valign="top"  onClick="location.href='<%= new_patent_protocol_path(:patent=>patent_protocol.patent_id) %>'"> 
+      <td><%=date patent_protocol.time %></td>
+      <td><%=Patent.find(patent_protocol.patent_id).internaktenzeichen %></td>
+      <td><%=truncate (Patent.find(patent_protocol.patent_id).titel,:length=>80)%>
+        <td><%=h patent_protocol.comment%></td>
 
-<br />
+        </tr>
+      <% end %>
+    </table>
+
+    <br />
 

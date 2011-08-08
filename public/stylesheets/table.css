@@ -1,0 +1,41 @@
+table.mytable
+{
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+margin-top: 50px;
+width: 95%;
+}
+
+table.mytable th, table.mytable td {
+vertical-align: 4px;
+font-size: 10px
+}
+table.mytable th {
+	text-align: left;
+	text-transform: uppercase;
+}
+
+
+table.mytable tr.white   {
+	background-color: #FFFFFF;
+}
+table.mytable tr.green  {
+	background-color: #81F781;
+}
+table.mytable th  {
+	background-color: #8fA8A3;
+}
+
+
+
+table caption, th, tfoot td {
+	font-weight: normal;
+	color: white;
+}
+table {
+	border-spacing: 0;
+	width: 650px;
+}
+table th a,table th a:visited {
+	color: Black;
+	text-decoration: none;
+}

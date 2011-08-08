@@ -1,19 +1,29 @@
 <%title "Rechnungen"%>
 <%= form_for @search do |f| %>
-  <p>
-  <%= f.label "Datum" %>
-  <%= f.text_field :datum_eq%>
-  </p>
-  <p>
-  <%= f.label "Rechnungsnummer" %>
-  <%= f.text_field :rechnungsnummer_contains%>
-  </p>
-  <p>
-  <%= f.label "Patent" %>
-  <%= f.text_field :with_patents_by_intern%>
-  </p>
-
-
+  <table class=mytable>
+    <tr>
+      <td>
+        <%= f.label "Datum" %>
+      </td>
+      <td>
+        <%= f.text_field :datum_eq%>
+      </td>
+      <td>
+        <%= f.label "Rechnungsnummer" %>
+      </td>
+      <td>
+        <%= f.text_field :rechnungsnummer_contains%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label "Patent" %>
+      </td>
+      <td>
+        <%= f.text_field :with_patents_by_intern%>
+      </td>
+    </tr>
+  </table>
  <p class="button"><%= f.submit "Search" %></p>
 <% end %>
 
@@ -27,11 +37,10 @@
   </tr>
 
 <% @bills.each do |bill| %>
-  <tr>
+  <tr valign="top" onClick="location.href='<%= new_bill_path(:patent=>bill.patent_id) %>'"> 
     <td><%=date bill.datum %></td>
-    <td><%=(link_to bill.patent.internaktenzeichen, bill.patent )unless bill.patent.nil?%></td>
+    <td><%= bill.patent.internaktenzeichen%></td>
     <td><%=h bill.rechnungsnummer %></td>
-    <td><%= link_to 'Löschen', bill, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -11,7 +11,7 @@
     <td><%=h bill.rechnungsnummer %></td>
     <td><%=h bill.user.name unless bill.user.nil?%></td>
     <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
-    <td><%= link_to 'Destroy', bill, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Löschen', bill, :confirm => 'Are you sure?', :method => :delete %></td>
     <td><%= link_to 'Drucken', :format=>:pdf,:action=>"pdf_rechnung", :id=>bill %></td>
   </tr>
 <% end %>

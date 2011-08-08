@@ -7,9 +7,9 @@
 
 <% @transactions.each do |patent_protocol| %>
   <tr>
-    <td><%=h patent_protocol.time %></td>
+    <td><%=date patent_protocol.time %></td>
     <td><%=h patent_protocol.comment%></td>
-    </td>
+    <td>  <%= link_to 'Löschen', patent_protocol, :confirm => 'Wirklich löschen?', :method => :delete %>  </td>
   </tr>
 <% end %>
 </table>
