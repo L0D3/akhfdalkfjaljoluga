@@ -37,7 +37,6 @@
   </tr>
 
 <% @bills.each do |bill| %>
-    <%= link_to 'Löschen', bill, :confirm => 'Are you sure?', :method => :delete %>
   <tr valign="top" onClick="location.href='<%= new_bill_path(:patent=>bill.patent_id) %>'"> 
     <td><%=date bill.datum %></td>
     <td><%= bill.patent.internaktenzeichen unless bill.patent.nil?%></td>
