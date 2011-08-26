@@ -1,5 +1,9 @@
 <%title "Patente"%>
 <%= form_for @search do |f| %>
+
+
+<%=text_field_with_auto_complete :search, :status_eq, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search'}%>
+
   <table class=mytable>
     <tr>
       <td>
