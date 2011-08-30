@@ -1,8 +1,5 @@
 <%title "Patente"%>
 <%= form_for @search do |f| %>
-
-
-
   <table class=mytable>
     <tr>
       <td>
@@ -33,7 +30,21 @@
       </td>
     </tr>
     <tr>
-      <td>
+       <td>
+        <%= f.label "Anmelder" %>
+      </td>
+        <td>
+        <%= f.text_field "submitters_name_contains" %>
+      </td>
+       <td>
+        <%= f.label "Erfinder" %>
+      </td>
+        <td>
+        <%= f.text_field "inventors_name_contains" %>
+      </td>
+    </tr>
+    <tr>
+     <td>
         <%= f.label "Status" %>
       </td>
       <td>
@@ -76,10 +87,28 @@
     </tr>
   <% end %>
 </table>
+<br />
+<br />
+<b>Neues Patent hinzufügen</b>
+<table>
+  <tr>
+    <td>
+<%= link_to 'EU', new_patent_path (:nation=>"Europa")%> 
+    </td>
+    <td>
+<%= link_to 'DE', new_patent_path (:nation=>"Deutschland")%>
+    </td>
+    <td>
+<%= link_to 'UK', new_patent_path (:nation=>"UnitedKingdom")%>
+    </td>
+    <td>
+<%= link_to 'FR', new_patent_path (:nation=>"Frankreich")%>
+    </td>
+    <td>
+<%= link_to 'SP', new_patent_path (:nation=>"Spanien")%>
+    </td>
+    <td>
+<%= link_to 'CH', new_patent_path (:nation=>"China")%>
+    </td>
+  </tr>
 
-<br />
-<%= link_to 'europäisches Patent hinzufügen', new_patent_path (:nation=>"Europa")%> | 
-<%= link_to 'deutsches Patent hinzufügen', new_patent_path (:nation=>"Deutschland")%>
-<br />
-<br />
-<%= link_to 'Übersicht drucken',:action=>"pdf_patent_tabelle",:format=>:pdf %>

@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 #  before_filter :login_required
   def index
-    if params[:search].blank?
+    if params[:search2].blank?
     @search = User.search(params[:search])
     @users = @search.all.paginate(:per_page=>10,:page=>params[:page])
     end
-    @selusers=User.find(:all, :conditions=>['name Like ?',"%#{params[:search]}%"])
+    @selusers=User.find(:all, :conditions=>['name Like ?',"%#{params[:search2]}%"])
   end
 
   # GET /users/1

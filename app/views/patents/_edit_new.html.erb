@@ -46,7 +46,7 @@
         Anmelder: 
       </td>
       <td>
-<%=raw (text_field_with_auto_complete :patent, :submitter_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search'})%>
+<%=raw (text_field_with_auto_complete :patent, :submitter_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search2'})%>
       </td>
     </tr>
     <tr>
@@ -62,7 +62,7 @@
         Erfinder: 
       </td>
       <td>
-<%=text_field_with_auto_complete :patent, :inventor_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search'}%>
+<%=text_field_with_auto_complete :patent, :inventor_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search2'}%>
       </td>
     </tr>
     <tr>
@@ -85,7 +85,7 @@
         Vertreter: 
       </td>
       <td>
-<%=text_field_with_auto_complete :patent, :procurator_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search'}%>
+<%=text_field_with_auto_complete :patent, :procurator_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search2'}%>
       </td>
     </tr>
     <tr>

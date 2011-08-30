@@ -1,7 +1,19 @@
 <%if @nation=="Europa"%>
  <%= render :partial => 'eu', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
  <%end%>
-<%if @nation=="Deutschland"%>
+<%if @nation=="Frankreich"%>
+ <%= render :partial => 'fr', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%end%>
+ <%if @nation=="Deutschland"%>
  <%= render :partial => 'de', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%end%>
+ <%if @nation=="Spanien"%>
+ <%= render :partial => 'sp', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%end%>
+ <%if @nation=="UnitedKingdom"%>
+ <%= render :partial => 'uk', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%end%>
+ <%if @nation=="China"%>
+ <%= render :partial => 'ch', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
  <%end%>
  

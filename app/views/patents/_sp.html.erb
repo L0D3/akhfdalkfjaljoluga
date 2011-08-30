@@ -1,0 +1,6 @@
+<b>Spanisches Patent:</b>
+<% form_for(@patent) do |f| %>
+  <%= f.hidden_field :nationalität, :value => "Spanien" %>
+  <%= render :partial => 'edit_new' ,:locals=>{:f=>f,:buttonlabel=>buttonlabel}%>
+<% end %>
+

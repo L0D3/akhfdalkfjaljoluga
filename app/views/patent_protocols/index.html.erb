@@ -12,7 +12,7 @@
         <%= f.label "Az. ips" %>
       </td>
       <td>
-        <%= f.text_field :with_patents_by_intern%>
+        <%= f.text_field :patent_internaktenzeichen_contains%>
       </td>
     </tr>
     <tr>
@@ -20,7 +20,7 @@
         <%= f.label "Az. amtl" %>
       </td>
       <td>
-        <%= f.text_field :with_patents_by_amtl%>
+        <%= f.text_field :patent_amtlaktenzeichen_contains%>
       </td>
       <td>
         <%= f.label "Transaktion" %>
@@ -39,7 +39,7 @@
     <th><%=sort_link @search,:time, "Datum"%></th>
     <th><%=sort_link @search,:time, "Patent"%></th>
     <th><%=sort_link @search,:time, "Titel der Anmeldung"%></th>
-    <th><%=sort_link @search,:comment, "Transaction"%></th>
+    <th><%=sort_link @search,:comment, "Transaktion"%></th>
   </tr>
 
   <% @patent_protocols.each do |patent_protocol| %>
