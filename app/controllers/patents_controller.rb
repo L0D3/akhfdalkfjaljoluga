@@ -24,7 +24,7 @@ class PatentsController < ApplicationController
     end
   end
   def pdf_patent_tabelle
-    @patents=Patent.all
+    @patents=Patent.find(params[:patents])
     respond_to do |format|
       format.pdf
     end

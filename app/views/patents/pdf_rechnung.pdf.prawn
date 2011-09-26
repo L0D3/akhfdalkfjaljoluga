@@ -59,7 +59,7 @@ pdf.text "Zur Erstattung unserer Auslagen bitten wir um Überweisung von <b> "+@
   :inline_format=>true
 end
 pdf.move_down 13
-pdf.text "Einzuzahlen innerhalb von 30 Tagen ohne Abzug.
+pdf.text "Einzahlbar innerhalb von 30 Tagen ohne Abzug.
 
 
 Für Rückfragen stehen wir gerne zur Verfügung.

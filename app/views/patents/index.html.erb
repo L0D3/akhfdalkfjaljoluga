@@ -52,7 +52,11 @@
       </td>
     </tr>
   </table>
-  <p class="button"><%= f.submit "Search" %></p>
+  <br />
+  <%= f.submit "Suchen" %>
+  <%= link_to 'Drucken', :action=>"pdf_patent_tabelle",:patents=>@patents,:format=>:pdf%>
+  <br />
+  <br />
 <% end %>
 <%= will_paginate @patents %>
 <table class=mytable >
@@ -93,7 +97,28 @@
 <table>
   <tr>
     <td>
-<%= link_to 'EU', new_patent_path (:nation=>"Europa")%> 
+<%= link_to 'EP', new_patent_path (:nation=>"Europa")%> 
+    </td>
+ <td>
+<%= link_to 'ES', new_patent_path (:nation=>"Spanien")%> 
+    </td>
+  <td>
+<%= link_to 'LU', new_patent_path (:nation=>"LU")%> 
+    </td>
+   <td>
+<%= link_to 'AT', new_patent_path (:nation=>"AT")%> 
+    </td>
+    <td>
+<%= link_to 'US', new_patent_path (:nation=>"USA")%> 
+    </td>
+      <td>
+<%= link_to 'JP', new_patent_path (:nation=>"Japan")%> 
+    </td>
+    <td>
+<%= link_to 'CA', new_patent_path (:nation=>"CA")%> 
+    </td>
+     <td>
+<%= link_to 'IT', new_patent_path (:nation=>"Italien")%> 
     </td>
     <td>
 <%= link_to 'DE', new_patent_path (:nation=>"Deutschland")%>
@@ -103,9 +128,6 @@
     </td>
     <td>
 <%= link_to 'FR', new_patent_path (:nation=>"Frankreich")%>
-    </td>
-    <td>
-<%= link_to 'SP', new_patent_path (:nation=>"Spanien")%>
     </td>
     <td>
 <%= link_to 'CH', new_patent_path (:nation=>"China")%>

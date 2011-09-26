@@ -1,5 +1,5 @@
 <%if @nation=="Europa"%>
- <%= render :partial => 'eu', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%= render :partial => 'ep', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
  <%end%>
 <%if @nation=="Frankreich"%>
  <%= render :partial => 'fr', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
@@ -8,7 +8,25 @@
  <%= render :partial => 'de', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
  <%end%>
  <%if @nation=="Spanien"%>
- <%= render :partial => 'sp', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%= render :partial => 'es', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%end%>
+<%if @nation=="LU"%>
+ <%= render :partial => 'lu', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%end%>
+<%if @nation=="AT"%>
+ <%= render :partial => 'at', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%end%>
+<%if @nation=="USA"%>
+ <%= render :partial => 'us', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%end%>
+<%if @nation=="Japan"%>
+ <%= render :partial => 'jp', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%end%>
+<%if @nation=="CA"%>
+ <%= render :partial => 'ca', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
+ <%end%>
+<%if @nation=="Italien"%>
+ <%= render :partial => 'it', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>
  <%end%>
  <%if @nation=="UnitedKingdom"%>
  <%= render :partial => 'uk', :locals =>{:action =>'create', :buttonlabel => "erstellen"} %>

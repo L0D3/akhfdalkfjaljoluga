@@ -1,9 +1,9 @@
 <b>Bitte tragen Sie für folgende User noch ein wie hoch ihre Anteile am Patent sind<b>
 <br /> 
 <br /> 
-<%form_tag :action=>'update_submissions',:method=>:put do%>
+<%=form_tag :action=>'update_submissions',:method=>:put do%>
 <%for s in @patent.submissions%>
-  <%fields_for "submissions[]",s do |f|%>
+  <%=fields_for "submissions[]",s do |f|%>
   <b><%=s.submitter.name%></b> <br />
   Anteil: <%=f.text_field  :anteil%>
   <br /> 

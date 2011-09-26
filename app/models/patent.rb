@@ -20,7 +20,12 @@ class Patent < ActiveRecord::Base
   def gebührenfälligkeit  
     if self.anmeldedatum.years_since(2) >Date.today
       then self.anmeldedatum.years_since(2).end_of_month
-    else  Date.new(Date.today.year,self.anmeldedatum.month,anmeldedatum.day).end_of_month
+    else 
+      date=Date.new(Date.today.year,self.anmeldedatum.month,anmeldedatum.day).end_of_month
+      if date<Date.today and (status_in_string=="aktiv" or status_in_string=="inaktiv")
+        date=Date.new(Date.today.year+1,self.anmeldedatum.month,anmeldedatum.day).end_of_month
+      end
+      return date
     end
   end
   def sort_by_fälligkeit
