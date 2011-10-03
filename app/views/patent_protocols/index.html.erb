@@ -30,8 +30,11 @@
       </td>
     </tr>
   </table>
-
- <p class="button"><%= f.submit "Search" %></p>
+  <br />
+  <%= f.submit "Suchen" %>
+  <%= link_to 'Drucken', :action=>"pdf_patentprotocols_tabelle",:patentprotocols=>@patentprotocols_print,:format=>:pdf%>
+  <br />
+  <br />
 <% end %>
 <%= will_paginate @patent_protocols %>
 <table class=mytable>

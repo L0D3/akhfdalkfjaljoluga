@@ -4,7 +4,8 @@ class PatentProtocolsController < ApplicationController
   def index
     if params[:search2].blank?
     @search = PatentProtocol.search(params[:search])
-    @patent_protocols = @search.all.paginate(:per_page=>25,:page=>params[:page])
+    @patentprotocols_print = @search.all
+    @patent_protocols = @patentprotocols_print.paginate(:per_page=>25,:page=>params[:page])
   end
     @seltransactions=PatentProtocol.find(:all, :conditions=>['comment Like ?',"%#{params[:search2]}%"])
   end
@@ -82,6 +83,12 @@ class PatentProtocolsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(patent_protocols_url) }
       format.xml  { head :ok }
+    end
+  end
+  def pdf_patentprotocols_tabelle
+    @p=PatentProtocol.find(params[:patentprotocols])
+    respond_to do |format|
+      format.pdf
     end
   end
 end

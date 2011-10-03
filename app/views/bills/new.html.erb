@@ -1,6 +1,7 @@
 <table>
   <tr>
     <th>Bezugsdatum</th>
+    <th>Rechnungsdatum</th>
     <th>Rechnungsnummer</th>
     <th>Anmelder</th>
   </tr>
@@ -8,10 +9,11 @@
 <% @bills.each do |bill| %>
   <tr>
     <td><%=date bill.datum %></td>
+    <td><%=date bill.rechnungsdatum %></td>
     <td><%=h bill.rechnungsnummer %></td>
     <td><%=h bill.user.name unless bill.user.nil?%></td>
     <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
-    <td><%= link_to 'Löschen', bill, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Löschen', bill, :confirm => 'Are you sure?', :method => :delete ,:patent=>@patent.id %></td>
     <td><%= link_to 'Drucken', :format=>:pdf,:action=>"pdf_rechnung", :id=>bill %></td>
   </tr>
 <% end %>
@@ -26,9 +28,13 @@
 <% form_for(@bill) do |f| %>
  <%=f.hidden_field :patent_id , :value =>@patent_id%>
   <%= f.error_messages %>
-
   <p>
-    <%= f.label :datum %><br />
+    <%= f.label "Rechnungsdatum" %><br />
+    <%= f.date_select :rechnungsdatum %>
+  </p>
+ 
+  <p>
+    <%= f.label "Bezugsdatum" %><br />
     <%= f.date_select :datum %>
   </p>
   <p>
@@ -37,7 +43,7 @@
   </p>
   <%-if @patent.submitters.size>1%>
 <%=f.label :user%>
-<%=f.collection_select :user ,@patent.submitters,:id,:name%>
+<%=f.collection_select :user_id ,@patent.submitters,:id,:name%>
 <%else%>
   <%=f.hidden_field :user_id , :value =>@patent.submitters.first.id%>
 <%end%>

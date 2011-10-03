@@ -54,7 +54,7 @@
   </table>
   <br />
   <%= f.submit "Suchen" %>
-  <%= link_to 'Drucken', :action=>"pdf_patent_tabelle",:patents=>@patents,:format=>:pdf%>
+  <%= link_to 'Drucken', :action=>"pdf_patent_tabelle",:patents=>@patents_print,:format=>:pdf%>
   <br />
   <br />
 <% end %>

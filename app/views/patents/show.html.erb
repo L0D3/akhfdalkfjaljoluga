@@ -10,7 +10,7 @@
   <%= link_to 'Löschen', @patent, :confirm => 'Wirklich löschen?', :method => :delete %>
   </li>
   <li>
-  <%= link_to 'Back', patents_path %> 
+  <%= link_to 'Zurück', patents_path %> 
   </li>
   <b>Drucken</b>
   <br />
@@ -42,7 +42,7 @@
   <b>Erweitert</b>
   <br/>
   <li>
-  <%= link_to 'Anmelderanteile',:action=>"edit_submissions",:id=>@patent%>
+  <%= link_to 'Anmelderanteile' ,editsubmissions_patents_path(:id=>@patent.id)%>
   </li>
   <li>
   <%= link_to 'Rechnungen', new_bill_path (:patent=>@patent.id) %>
@@ -92,7 +92,7 @@
         Anmelder: 
       </td>
       <td>
-        <%=h (@patent.submitter_names)%>
+        <%=h (@patent.submitter_names_with_anteile)%>
       </td>
     </tr>
     <tr>

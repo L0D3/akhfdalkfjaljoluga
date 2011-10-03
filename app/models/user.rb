@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
    belongs_to :ansprechpartner, :class_name => "User", :primary_key => "ansprechpartner_id"
    has_many :procurations
    has_many :inventions
+   has_many :bills
    has_many :submissions
    has_many :patent_procurations,  :through => :procurations
    has_many :patent_inventions,   :through => :inventions

@@ -4,7 +4,8 @@ class PatentsController < ApplicationController
   # GET /patents.xml
   def index
     @search = Patent.search(params[:search])
-    @patents = @search.all.sort_by(&:sort_by_fälligkeit).paginate(:per_page=>7,:page=>params[:page])
+    @patents_print = @search.all.sort_by(&:sort_by_fälligkeit)
+    @patents = @search.all.sort_by(&:sort_by_fälligkeit).paginate(:per_page=>15,:page=>params[:page])
   end
 
   # GET /patents/1
@@ -57,14 +58,25 @@ class PatentsController < ApplicationController
   def pdf_patentliste
   end
 
-  def edit_submissions
+  def editsubmissions
     @patent=Patent.find(params[:id])
     @submissions=@patent.submissions
 
   end
-  def update_submissions
-    Submission.update(params[:submissions].keys,params[:submissions].values)
-    redirect_to patents_url
+  def updatesubmissions
+    @patent=Patent.find(params[:patentid])
+    anteil=0
+    params[:submissions].values.each do |a|
+      anteil+=a.values_at("anteil").first.to_i
+    end
+    if anteil==100
+      Submission.update(params[:submissions].keys,params[:submissions].values)
+      flash[:notice] = 'Anteile am Patent wurden erfolgreich geändert.'
+      redirect_to @patent
+    else
+      flash[:notice] = 'Die Summe der Anteile muss 100 betragen'
+      redirect_to :back
+    end
   end
   def edit
     @users=User.find(:all)

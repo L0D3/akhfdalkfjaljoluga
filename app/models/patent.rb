@@ -54,6 +54,9 @@ class Patent < ActiveRecord::Base
   def submitter_names
     submitters.find(:all,:select=>"name").map(&:name).join('; ')
   end
+  def submitter_names_with_anteile
+    submissions.all.map{|s| s.submitter.name+"("+s.anteil.to_s+")" }.join('; ')
+  end
   def submitter_names=(names)
     submitters.clear
     names.split(';').each do|h|
@@ -107,8 +110,8 @@ class Patent < ActiveRecord::Base
 
   def jahresgebühr
     jahresgebühr=0
-    if  Date.today.year-1-self.anmeldedatum.year >0
-      then  jahresgebühr=Date.today.year+1-self.anmeldedatum.year 
+    if  gebührenfälligkeit.year-1-self.anmeldedatum.year >0
+      then  jahresgebühr=gebührenfälligkeit.year+1-self.anmeldedatum.year 
     end
     jahresgebühr.to_s
   end

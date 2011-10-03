@@ -3,7 +3,7 @@
   <table class=mytable>
     <tr>
       <td>
-        <%= f.label "Datum" %>
+        <%= f.label "Bezugsdatum" %>
       </td>
       <td>
         <%= f.text_field :datum_eq%>
@@ -17,6 +17,13 @@
     </tr>
     <tr>
       <td>
+        <%= f.label "Rechnungdatum" %>
+      </td>
+      <td>
+        <%= f.text_field :rechnungsdatum_eq%>
+      </td>
+
+      <td>
         <%= f.label "Patent" %>
       </td>
       <td>
@@ -25,20 +32,24 @@
     </tr>
   </table>
  <p class="button"><%= f.submit "Search" %></p>
+  <%= link_to 'Drucken', :action=>"pdf_bill_tabelle",:bills=>@bills_print,:format=>:pdf%>
+  <br />
 <% end %>
 
 
 <%= will_paginate @bills%>
 <table class=mytable>
   <tr>
-<th><%= sort_link @search, :datum,"Datum"%></th> 
-<th><%= sort_link @search, :datum,"Patent"%></th> 
+<th><%= sort_link @search, :datum,"Bezugsdatum"%></th> 
+<th><%= sort_link @search, :rechnungsdatum,"Rechnungsdatum"%></th> 
+<th><%= sort_link @search, :patent_internaktenzeichen,"Patent"%></th> 
 <th><%= sort_link @search, :rechnungsnummer,"Rechnungsnummer"%></th> 
   </tr>
 
 <% @bills.each do |bill| %>
   <tr valign="top" onClick="location.href='<%= new_bill_path(:patent=>bill.patent_id) %>'"> 
     <td><%=date bill.datum %></td>
+    <td><%=date bill.rechnungsdatum%></td>
     <td><%= bill.patent.internaktenzeichen unless bill.patent.nil?%></td>
     <td><%=h bill.rechnungsnummer %></td>
   </tr>

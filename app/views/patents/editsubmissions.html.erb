@@ -1,7 +1,8 @@
-<b>Bitte tragen Sie für folgende User noch ein wie hoch ihre Anteile am Patent sind<b>
+<b>Anteile(in Prozent) der Anmelder am Patent<b>
 <br /> 
 <br /> 
-<%=form_tag :action=>'update_submissions',:method=>:put do%>
+<%=form_tag updatesubmissions_patents_path,:method=>"put" do%>
+  <%=hidden_field_tag 'patentid', @patent.id%>
 <%for s in @patent.submissions%>
   <%=fields_for "submissions[]",s do |f|%>
   <b><%=s.submitter.name%></b> <br />
@@ -10,5 +11,5 @@
   <br /> 
 <%end%>
 <%end%>
-<%=submit_tag 'Speichern'%>
+<%=submit_tag 'Speichern',:id=>@patent%>
 <%end%>

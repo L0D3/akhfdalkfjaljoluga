@@ -2,10 +2,15 @@ PatverV1::Application.routes.draw do
   get "sessions/new"
 
   root :to => 'patents#index'
-  resources :patent_protocols
+  resources :patent_protocols do
+    collection do
+      get :pdf_patentprotocols_tabelle
+    end
+  end
   resources :bills do
     collection do
      get :pdf_rechnung
+      get :pdf_bill_tabelle
     end
   end
   resources :fees
@@ -26,10 +31,9 @@ PatverV1::Application.routes.draw do
       get :pdf_erinnerung2_eu
       get :pdf_rechnung_de
       get :pdf_rechnung_eu
-      get :pdf_patentübersicht
       get :pdf_patentliste
-      get :edit_submissions
-      put :update_submissions
+      get :editsubmissions
+      put :updatesubmissions
     end
   end
 end
