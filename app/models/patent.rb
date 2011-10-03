@@ -1,4 +1,6 @@
+
 class Patent < ActiveRecord::Base
+  include ActionView::Helpers::TextHelper
 #    validates_presence_of  :Lizenzbereitschaft,  :amtlAktenzeichen, :internAktenzeichen, :Titel 
   
   search_methods :gebührenfälligkeit
@@ -34,6 +36,7 @@ class Patent < ActiveRecord::Base
       else gebührenfälligkeit.years_since(1)
       end
   end
+  #das ist die Frist 
   def ersteerinnerung
   self.gebührenfälligkeit.beginning_of_month.advance(:days=>14)
   end
@@ -174,6 +177,10 @@ def letzte_änderung
   p=patent_protocols.find(:last)
   p.time unless p.nil?
 end
+  def submitter_names_for_table
+    submissions.all.map{|s| truncate(s.submitter.name,:length=>20)+"("+s.anteil.to_s+")" }.join('; ')
+  end
+
  private
  def eu_preis
    preis_für_jahr
