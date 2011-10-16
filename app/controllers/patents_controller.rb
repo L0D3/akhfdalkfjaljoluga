@@ -18,6 +18,7 @@ class PatentsController < ApplicationController
   def new
     @users=User.find(:all)
     @patent = Patent.new
+    @patent.status=1
     @nation=params[:nation]
     respond_to do |format|
       format.html # new.html.erb

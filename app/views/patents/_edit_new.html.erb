@@ -1,8 +1,11 @@
 
 <div id="auswahlmenu">
   <b>Bearbeiten</b>   <br />
- 
-  <li>  <%= link_to 'Back', patent_path(@patent) %></li>
+  <%if "buttonlabel"=='Update'%> 
+  <li>  <%= link_to 'Back', patent_path(@patent) -%></li>
+<%else%>
+  <li>  <%= link_to 'Back', patents_path -%></li>
+<%end%>
   <li><%= f.submit buttonlabel%></li>
  </div>
 <div id="mitte">
@@ -70,7 +73,7 @@
         Status:
       </td>
       <td>
-<%= f.select(  "status", { "aktiv" => "1", "Anfrage" => "2","1.Erinnerung"=>"3","2.Erinnerung"=>"4","Rechnung gestellt"=>"5","Jahresgebühr zu veranlassen"=>"6","inaktiv"=>7}) %>
+        <%= f.select(  "status", { "aktiv" => "1", "Anfrage" => "2","1.Erinnerung"=>"3","2.Erinnerung"=>"4","Rechnung gestellt"=>"5","Jahresgebühr zu veranlassen"=>"6","inaktiv"=>7}) %>
       </td>
     </tr>
      <tr>
