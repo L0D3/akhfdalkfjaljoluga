@@ -96,6 +96,10 @@ class BillsController < ApplicationController
     @bill=Bill.find(params[:id])
     @datum=@bill.datum
     @patent=@bill.patent
+    @user=@bill.user.name
+    @submission= Submission.find_by_patent_id_and_submitter_id(@patent.id,@bill.user.id)
+@anteil=sprintf('%.2f', @patent.preis(@submission)).gsub('.',',')
+
     @rechnungsnummer=@bill.rechnungsnummer
     respond_to do |format|
     format.pdf

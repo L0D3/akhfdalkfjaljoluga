@@ -97,11 +97,11 @@ class Patent < ActiveRecord::Base
   def überwachungsanfrage
       self.gebührenfälligkeit.months_ago(3)
   end
-  def preis
-    preis=case nationalität
-    when "Europa" then eu_preis
-    when "Deutschland" then de_preis
-    else -1
+  def preis(s)
+    if s.nil?
+    preis_für_jahr
+    else 
+    preis_für_jahr.to_f*0.01*s.anteil
   end
   end
 

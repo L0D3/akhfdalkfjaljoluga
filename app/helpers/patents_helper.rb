@@ -108,13 +108,37 @@ def betreff_patentanfrage pdf
  "+'"'+@patent.titel+'"'
  )
 end
-  def rechnung(pdf, text)
-    pdf.bounding_box [20,408], :width => 500 do
-       pdf.font ("Times-Roman",:size=>10) do
-       pdf.text  "Sehr geehrte Damen und Herren,"
-       pdf.move_down 7
-       pdf.text text, :inline_format=>true 
-       end
-     end
-  end
+def rechnung(pdf, part1,part2,part3)
+  pdf.bounding_box [20,408], :width => 500 do
+    pdf.font ("Times-Roman",:size=>10) do
+      pdf.text  "Sehr geehrte Damen und Herren,"
+      pdf.move_down 7
+      pdf.text part1, :inline_format=>true 
     end
+    if @patent.submissions.size >1
+      pdf.font ("Times-Roman",:size=>10) do
+        pdf.text part2, :inline_format=>true 
+      end
+      pdf.move_down 7
+    pdf.font ("Times-Roman",:size=>7) do
+      items=@patent.submissions.map do |item|
+        [
+          item.submitter.name,
+          item.anteil.to_s+'%',
+        ]
+      end
+
+
+      pdf.table items, :border_style =>:grid,
+        :font_size=>9,
+        :borders=>[:zero,:top,:zero,:zero],
+        :border_width =>1
+      pdf.move_down @patent.submitters.size*7
+    end
+    end
+    pdf.font ("Times-Roman",:size=>10) do
+      pdf.text part3, :inline_format=>true 
+    end
+  end
+end
+end
