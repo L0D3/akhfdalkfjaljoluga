@@ -50,6 +50,13 @@
       <td>
         <%= f.select(  :status_eq,{"aktiv" => "1", "Anfrage" => "2","1.Erinnerung"=>"3","2.Erinnerung"=>"4","Rechnung gestellt"=>"5","Jahresgebühr zu veranlassen"=>"6","inaktiv"=>7},{:include_blank=>true }) %>
       </td>
+      <td>
+        <%= f.label "Anmeldedatum" %>
+      </td>
+      <td>
+        <%= f.select(  :anmeldedatum_month_eq,{"Januar" => 1, "Februar" => 2,"März"=>3,"April"=>4,"Mai"=>5,"Juni"=>6,"Juli"=>7,"August"=>8,"September"=>9,"Dezember"=>10,"November"=>11,"Dezember"=>12},{:include_blank=>true })%>
+      </td>
+
     </tr>
   </table>
   <br />
@@ -67,7 +74,7 @@
     <th><%=  sort_link @search, :amtlaktenzeichen,"Az. amtl" %></th> 
     <th><%= sort_link @search, :ihrzeichen,"Az. Kunde" %></th>
     <th><%= sort_link @search, :anmeldedatum,"Anmeldedatum"%></th>
-    <th><%= sort_link @search, :sort_by_fälligkeit,"Fälligkeit" %></th>
+    <th><%= sort_link @search, :anmeldedatum_month,"Fälligkeit" %></th>
     <th><%= sort_link @search, :submitter_names,"Anmelder" %></th>
     <th><%= sort_link @search, :titel,"Titel der Anmeldung" %></th>
     <th><%= sort_link @search, :inventor_names,"Erfinder" %></th>

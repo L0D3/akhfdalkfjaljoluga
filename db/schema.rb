@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927114953) do
+ActiveRecord::Schema.define(:version => 20111017164712) do
 
   create_table "admins", :force => true do |t|
     t.string    "login",                     :limit => 40
@@ -110,6 +110,9 @@ ActiveRecord::Schema.define(:version => 20110927114953) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.boolean   "rechnung_bezahlt"
+    t.integer   "anmeldedatum_day"
+    t.integer   "anmeldedatum_month"
+    t.string    "patent_type"
   end
 
   create_table "procurations", :force => true do |t|

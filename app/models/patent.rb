@@ -2,14 +2,22 @@
 class Patent < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
 #    validates_presence_of  :Lizenzbereitschaft,  :amtlAktenzeichen, :internAktenzeichen, :Titel 
-  
-  search_methods :gebührenfälligkeit
+  after_create { 
+    Patent.where('anmeldedatum_month is null').each do |u|
+    u.anmeldedatum_month = u.anmeldedatum.month
+    u.anmeldedatum_day = u.anmeldedatum.day
+    u.save
+  end
+}
 
 
+  def update_anmeldedatum_fields
+    self.anmeldedatum_month=19
+    self.anmeldedatum_day=self.anmeldedatum.day
+  end
   def date string
     Date.strptime(string,'%d/%m/%y')
   end
-
 
   has_many :procurations
   has_many :bills
@@ -30,6 +38,15 @@ class Patent < ActiveRecord::Base
       return date
     end
   end
+
+  def lizenzbereitschaft?
+  if lizenzbereitschaft
+    return "erteilt"
+  else
+    return "nicht erteilt"
+  end
+  end
+ 
   def sort_by_fälligkeit
     if gebührenfälligkeit>=Date.today
       gebührenfälligkeit

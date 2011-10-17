@@ -4,8 +4,8 @@ class PatentsController < ApplicationController
   # GET /patents.xml
   def index
     @search = Patent.search(params[:search])
-    @patents_print = @search.all.sort_by(&:sort_by_fälligkeit)
-    @patents = @search.all.sort_by(&:sort_by_fälligkeit).paginate(:per_page=>15,:page=>params[:page])
+    @patents_print = @search.all
+    @patents = @search.all.paginate(:per_page=>15,:page=>params[:page])
   end
 
   # GET /patents/1
