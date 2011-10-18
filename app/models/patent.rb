@@ -115,10 +115,10 @@ class Patent < ActiveRecord::Base
       self.gebührenfälligkeit.months_ago(3)
   end
   def preis(s)
-    if s.nil?
+    if s.nil? or s.anteil.blank?
     preis_für_jahr
     else 
-    preis_für_jahr.to_f*0.01*s.anteil
+    preis_für_jahr.to_f*0.01*s.anteil 
   end
   end
 
