@@ -1,0 +1,4 @@
+<b>Östereichisches <%=@patent.type%>:</b>
+  <%= hidden_field :patent, :nationalität, :value => "at" %>
+  <%= render :partial => '/partials/edit_new' ,:locals=>{:buttonlabel=>buttonlabel}%>
+

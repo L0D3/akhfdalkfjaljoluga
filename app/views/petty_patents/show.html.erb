@@ -1,0 +1,16 @@
+
+<div id="auswahlmenu">
+  <b>Bearbeiten</b>
+  <br />
+  <li>
+  <%= link_to 'Edit', edit_patent_path(@patent) %> 
+  </li>
+  <li>
+  <%= link_to 'Löschen', @patent, :confirm => 'Wirklich löschen?', :method => :delete %>
+  </li>
+  <li>
+  <%= link_to 'Zurück', petty_patents_path %> 
+  </li>
+</div>
+
+<%=render :partial=>"/partials/patent_show.html.erb"%>

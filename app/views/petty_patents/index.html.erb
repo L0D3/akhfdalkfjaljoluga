@@ -1,0 +1,45 @@
+<%title "Gebrauchsmuster"%>
+<%=render :partial=>"/partials/patent_search"%>
+<br />
+<br />
+<b>Neues Gebrauchsmuster hinzufügen</b>
+<table>
+  <tr>
+    <td>
+<%= link_to 'EP', new_petty_patent_path (:nation=>"Europa")%> 
+    </td>
+ <td>
+<%= link_to 'ES', new_petty_patent_path (:nation=>"Spanien")%> 
+    </td>
+  <td>
+<%= link_to 'LU', new_petty_patent_path (:nation=>"LU")%> 
+    </td>
+   <td>
+<%= link_to 'AT', new_petty_patent_path (:nation=>"AT")%> 
+    </td>
+    <td>
+<%= link_to 'US', new_petty_patent_path (:nation=>"USA")%> 
+    </td>
+      <td>
+<%= link_to 'JP', new_petty_patent_path (:nation=>"Japan")%> 
+    </td>
+    <td>
+<%= link_to 'CA', new_petty_patent_path (:nation=>"CA")%> 
+    </td>
+     <td>
+<%= link_to 'IT', new_petty_patent_path (:nation=>"Italien")%> 
+    </td>
+    <td>
+<%= link_to 'DE', new_petty_patent_path (:nation=>"Deutschland")%>
+    </td>
+    <td>
+<%= link_to 'UK', new_petty_patent_path (:nation=>"UnitedKingdom")%>
+    </td>
+    <td>
+<%= link_to 'FR', new_petty_patent_path (:nation=>"Frankreich")%>
+    </td>
+    <td>
+<%= link_to 'CH', new_petty_patent_path (:nation=>"China")%>
+    </td>
+  </tr>
+

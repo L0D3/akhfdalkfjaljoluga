@@ -85,7 +85,7 @@ class PatentProtocolsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  def pdf_patentprotocols_tabelle
+  def pdf_table
     @p=PatentProtocol.find(params[:patentprotocols])
     respond_to do |format|
       format.pdf

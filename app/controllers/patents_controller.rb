@@ -19,13 +19,14 @@ class PatentsController < ApplicationController
     @users=User.find(:all)
     @patent = Patent.new
     @patent.status=1
+    @patent.patent_type="Patent"
     @nation=params[:nation]
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @patent }
     end
   end
-  def pdf_patent_tabelle
+  def pdf_table
     @patents=Patent.find(params[:patents])
     respond_to do |format|
       format.pdf
@@ -88,6 +89,8 @@ class PatentsController < ApplicationController
   # POST /patents.xml
   def create
     @patent = Patent.new(params[:patent])
+    @patent.patent_type="Patent"
+    @patent.status="aktiv" if @patent.status.nil?
     @users=User.all(:conditions=>"telefon is NULL") 
     respond_to do |format|
       if @patent.save

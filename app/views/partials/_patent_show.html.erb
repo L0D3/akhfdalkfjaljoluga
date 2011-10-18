@@ -1,0 +1,149 @@
+<div id="mitte">
+  <table class=normal>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>unser Aktenzeichen </td> 
+      <td><%=h (@patent.internaktenzeichen)%></td>
+    </tr>
+    <tr>
+      <td>
+        Anmeldedatum: 
+      </td>
+      <td>
+        <%=date (@patent.anmeldedatum)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        amtl. Aktenzeichen: 
+      </td>
+      <td>
+<%=h (@patent.amtlaktenzeichen)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Titel:
+      </td>
+      <td>
+        <%=h (@patent.titel)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Anmelder: 
+      </td>
+      <td>
+        <%=h (@patent.submitter_names_with_anteile)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ihr Aktenzeichen: 
+      </td>
+      <td>
+        <%=h (@patent.ihrzeichen)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Erfinder: 
+      </td>
+      <td>
+        <%=h (@patent.inventor_names)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Status:
+      </td>
+      <td>
+        <%=h (@patent.status_in_string)%>
+      </td>
+    </tr>
+    <%if @patent.nationalität=="Deutschland"%>
+      <tr>
+        <td>
+          Lizenzbereitschaft erteilt:
+        </td>
+        <td>
+          <%=h (@patent.lizenzbereitschaft)%>
+        </td>
+      </tr>
+    <%end%>
+    <tr>
+      <td>
+        Rechtsverlust: 
+      </td>
+      <td>
+        <%=date (@patent.rechtsverlust)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Überwachungsanfrage:
+      </td>
+      <td>
+        <%=date (@patent.überwachungsanfrage)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ErsteErinnerung: 
+      </td>
+      <td>
+        <%=date (@patent.anfrage)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ZweiteErinnerung: 
+      </td>
+      <td>
+        <%=date (@patent.zweiteerinnerung)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Gebührenfälligkeit: 
+      </td>
+      <td>
+        <%=date (@patent.gebührenfälligkeit)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Vertreter: 
+      </td>
+      <td>
+        <%=h (@patent.procurator_names)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Jahresgebühr: 
+      </td>
+      <td>
+        <%=h (@patent.jahresgebühr)%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Jahreskosten:
+      </td>
+      <td>
+        <%=h (@patent.preis(nil))%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Nationalität:
+      </td>
+      <td>
+        <%=h (@patent.nationalität)%>
+      </td>
+    </tr>
+  </div>

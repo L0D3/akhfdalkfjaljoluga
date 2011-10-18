@@ -1,0 +1,109 @@
+<div id="auswahlmenu">
+  <b>Bearbeiten</b>   <br />
+  <%if "buttonlabel"=='Update'%> 
+  <li>  <%= link_to 'Back', patent_path(@patent) -%></li>
+<%else%>
+  <li>  <%= link_to 'Back', patents_path -%></li>
+<%end%>
+  <li><%= submit_tag  buttonlabel%></li>
+ </div>
+<div id="mitte">
+
+<%= error_messages_for :patent%>
+<table class=normal>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>unser Aktenzeichen </td> 
+      <td><%= text_field :patent, :internaktenzeichen %></td>
+    </tr>
+    <tr>
+      <td>
+        Anmeldedatum: 
+      </td>
+      <td>
+<%= date_select :patent,:anmeldedatum,:use_month_numbers=>true, :order=>[:day,:month,:year],:start_year=>Time.now.year-20,:end_year=>Time.now.year %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        amtl. Aktenzeichen: 
+      </td>
+      <td>
+<%= text_field :patent, :amtlaktenzeichen%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Titel:
+      </td>
+      <td>
+<%= text_field  :patent, :titel %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Anmelder: 
+      </td>
+      <td>
+<%=raw (text_field_with_auto_complete :patent, :submitter_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search2'})%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ihr Aktenzeichen: 
+      </td>
+      <td>
+<%= text_field :patent, :ihrzeichen%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Erfinder: 
+      </td>
+      <td>
+<%=text_field_with_auto_complete :patent, :inventor_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search2'}%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Status:
+      </td>
+      <td>
+        <%= select(:patent,  "status", { "aktiv" => "1", "Anfrage" => "2","1.Erinnerung"=>"3","2.Erinnerung"=>"4","Rechnung gestellt"=>"5","Jahresgebühr zu veranlassen"=>"6","inaktiv"=>7}) %>
+      </td>
+    </tr>
+     <tr>
+      <td>
+        Rechtsverlust: 
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Vertreter: 
+      </td>
+      <td>
+<%=text_field_with_auto_complete :patent, :procurator_names, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search2'}%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>
+<% if buttonlabel=="Update"%>
+    <tr>
+      <td>
+        Nationalität:
+      </td>
+      <td>
+  <%= text_field :patent,:nationalität %>
+      </td>
+    </tr>
+ <%end%>
+</div> 

@@ -32,7 +32,7 @@
   </table>
   <br />
   <%= f.submit "Suchen" %>
-  <%= link_to 'Drucken', :action=>"pdf_patentprotocols_tabelle",:patentprotocols=>@patentprotocols_print,:format=>:pdf%>
+  <%= link_to 'Drucken', :action=>"pdf_table",:patentprotocols=>@patentprotocols_print,:format=>:pdf%>
   <br />
   <br />
 <% end %>
