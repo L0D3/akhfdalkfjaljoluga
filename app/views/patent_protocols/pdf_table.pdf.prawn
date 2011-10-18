@@ -1,4 +1,10 @@
-prawn_document(:page_layout=>:landscape,:page_size => "LEGAL") do |pdf|
+prawn_document(:filename=>"TransaktionsListe.pdf",:page_layout=>:landscape,:page_size => "LEGAL") do |pdf|
+pdf.font("Times-Roman",  :size => 8) do
+pdf.repeat :all do                                    
+pdf.draw_text "ips-Patentverwaltung/Transaktionsliste", :at => [pdf.bounds.left, -15]
+end
+end
+
 items=@p.map do |item|
 [
 date(item.time),

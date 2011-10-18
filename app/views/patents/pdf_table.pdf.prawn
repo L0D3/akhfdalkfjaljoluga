@@ -2,7 +2,7 @@ prawn_document (:filename=>"Patentliste.pdf", :page_layout => :landscape, :page_
 pdf.font("Times-Roman",  :size => 8)
 
 pdf.repeat :all do                                    
-pdf.draw_text "ips-Patentverwaltung ", :at => [pdf.bounds.left, -15]
+pdf.draw_text "ips-Patentverwaltung/Patentliste ", :at => [pdf.bounds.left, -15]
 end
 
 

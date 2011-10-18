@@ -8,7 +8,7 @@ warning_box(pdf,
 betreff_patentanfrage pdf
 
 anschreiben(pdf,
-"zur Aufrechterhaltung Ihres obigen Schutzrechtes wird am "+@patent.gebührenfälligkeit.strftime("%d.%m.%Y")+" die "+@patent.jahresgebühr+". Jahresgebühr in Höhe von "+@patent.preis+",00 € fällig.
+"zur Aufrechterhaltung Ihres obigen Schutzrechtes wird am "+@patent.gebührenfälligkeit.strftime("%d.%m.%Y")+" die "+@patent.jahresgebühr+". Jahresgebühr in Höhe von "+@patent.preis(nil)+",00 € fällig.
 
 Nach Ablauf dieser Frist ist für ein Zeitraum von sechs Monaten eine Nachzahlung der Gebühr zzgl. eines Verspätungszuschlages in Höhe von 50% der jeweils fälligen Jahresgebühr noch möglich, ohne einen Rechtsverlust zu erleiden. Nach Ablauf dieser Frist verfällt Ihr Schutzrecht.
 
