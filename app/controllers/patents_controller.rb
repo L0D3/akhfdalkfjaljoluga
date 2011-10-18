@@ -4,6 +4,7 @@ class PatentsController < ApplicationController
   # GET /patents.xml
   def index
     @search = Patent.search(params[:search])
+    @sort=params[:search][:meta_sort] unless params[:search].nil?
     @patents_print = @search.all
     @patents = @search.all.paginate(:per_page=>15,:page=>params[:page])
   end
@@ -27,7 +28,9 @@ class PatentsController < ApplicationController
     end
   end
   def pdf_table
-    @patents=Patent.find(params[:patents])
+    help=Patent.where(:id=>params[:patents])
+    help=help.order(params[:sort].gsub('.',' ')) unless params[:sort].nil?
+    @patents=help.all
     respond_to do |format|
       format.pdf
     end

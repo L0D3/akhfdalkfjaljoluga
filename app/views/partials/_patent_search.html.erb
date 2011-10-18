@@ -60,7 +60,7 @@
   </table>
   <br />
   <%= f.submit "Suchen" %>
-  <%= link_to 'Drucken', :action=>"pdf_table",:patents=>@patents_print,:format=>:pdf%>
+  <%= link_to 'Drucken', :action=>"pdf_table",:sort=>@sort,:patents=>@patents_print,:format=>:pdf%>
   <br />
   <br />
 <% end %>
