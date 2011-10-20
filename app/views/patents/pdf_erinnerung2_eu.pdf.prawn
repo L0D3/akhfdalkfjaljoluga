@@ -15,7 +15,7 @@ Nach Ablauf dieser Frist ist für ein Zeitraum von sechs Monaten eine Nachzahlun
 
 Sollten Sie die Anmeldung aufgeben wollen, ist diese, soweit das Schutzrecht auf eine unbeschränkt in Anspruch genommene Diensterfindung zurückgeht und die Vergütungsansprüche der Erfinder gemäß Arbeitnehmererfindergesetz nicht abgegolten sind, den Erfindern spätestens zwei Monate vor dem drohenden Rechtsverlust anzubieten.
 
-Bitte teilen Sie uns bis zum <u>"+@patent.anfrage.strftime("%d.%m.%Y")+"</u> durch Ankreuzen Ihrer Aufrechterhaltungsentscheidung, Unterschrift und Rückübersendung dieses Schreibens an angegebene Faxnummer verbindlich mit, ob Sie obiges Schutzrecht aufrecht erhalten wollen und ob wir die Einzahlung der nächsten Gebühr für Sie veranlassen sollen.")
+Bitte teilen Sie uns bis zum <u>"+@patent.ersteerinnerung.strftime("%d.%m.%Y")+"</u> durch Ankreuzen Ihrer Aufrechterhaltungsentscheidung, Unterschrift und Rückübersendung dieses Schreibens an angegebene Faxnummer verbindlich mit, ob Sie obiges Schutzrecht aufrecht erhalten wollen und ob wir die Einzahlung der nächsten Gebühr für Sie veranlassen sollen.")
 checkbox_1 pdf
 checkbox_2 pdf
 

@@ -86,6 +86,7 @@ class PatentsController < ApplicationController
   def edit
     @users=User.find(:all)
     @patent = Patent.find(params[:id])
+    @nation=@patent.nationalität
   end
 
   # POST /patents

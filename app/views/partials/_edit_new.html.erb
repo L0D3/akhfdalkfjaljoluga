@@ -1,11 +1,11 @@
 <div id="auswahlmenu">
   <b>Bearbeiten</b>   <br />
-  <%if "buttonlabel"=='Update'%> 
+  <%if buttonlabel=='update'%> 
   <li>  <%= link_to 'Back', patent_path(@patent) -%></li>
 <%else%>
   <li>  <%= link_to 'Back', patents_path -%></li>
 <%end%>
-  <li><%= submit_tag  buttonlabel%></li>
+  <li><%= submit_tag  "Speichern"%></li>
  </div>
 <div id="mitte">
 

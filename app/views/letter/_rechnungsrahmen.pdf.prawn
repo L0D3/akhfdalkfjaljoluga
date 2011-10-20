@@ -33,7 +33,7 @@ ppdf.image pigs, :at => [380,750], :scale => 0.3
  ppdf.bounding_box [380,525], :width => 300 do
     ppdf.text "Datum"
     ppdf.font ("Times-Roman",:size=>9) do
-      ppdf.text "<b>"+Time.now.strftime("%d.%m.%Y")+"</b>",:inline_format => true
+      ppdf.text "<b>"+@rechnungsdatum.strftime("%d.%m.%Y")+"</b>",:inline_format => true
     end
  end
 

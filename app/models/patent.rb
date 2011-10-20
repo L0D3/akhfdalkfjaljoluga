@@ -39,11 +39,11 @@ class Patent < ActiveRecord::Base
     end
   end
 
-  def lizenzbereitschaft?
+  def lizenzbereitschaft_erklärt?
   if lizenzbereitschaft
-    return "erteilt"
+    return "erklärt"
   else
-    return "nicht erteilt"
+    return "nicht erklärt"
   end
   end
  

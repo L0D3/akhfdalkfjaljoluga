@@ -2,10 +2,14 @@
 
 <% form_for(@bill) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :datum %><br />
+ <p>
+    <%= f.label "Bezugsdatum"%><br />
     <%= f.date_select :datum %>
+  </p>
+  
+  <p>
+    <%= f.label "Rechnungsdatum"%><br />
+    <%= f.date_select :rechnungsdatum %>
   </p>
   <p>
     <%= f.label :rechnungsnummer %><br />
@@ -17,4 +21,4 @@
 <% end %>
 
 <%= link_to 'Show', @bill %> |
-<%= link_to 'Back', bills_path %>
+<%= link_to 'Back', new_bill_path(:patent=>@bill.patent.id) %>

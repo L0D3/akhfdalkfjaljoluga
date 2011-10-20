@@ -1,7 +1,7 @@
 <b>Deutsches <%=@patent.patent_type%>:</b>
   <%= hidden_field :patent, :nationalität, :value => "Deutschland" %>
   <%= render :partial => '/partials/edit_new' ,:locals=>{:buttonlabel=>buttonlabel}%>
-    Lizenzbereitschaft erteilt?     <%= check_box :patent,:lizenzbereitschaft%>
+    Lizenzbereitschaft erklärt?     <%= text_field :patent,:lizenzbereitschaft%>
 
 
 

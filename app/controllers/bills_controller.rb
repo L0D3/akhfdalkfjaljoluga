@@ -69,7 +69,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.update_attributes(params[:bill])
-        format.html { redirect_to(@bill, :notice => 'Bill was successfully updated.') }
+        format.html { redirect_to(new_bill_path(:patent=>@bill.patent.id), :notice => 'Bill was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -96,6 +96,7 @@ class BillsController < ApplicationController
     @bill=Bill.find(params[:id])
     @datum=@bill.datum
     @patent=@bill.patent
+    @rechnungsdatum=@bill.rechnungsdatum
     @user=@bill.user.name
     @submission= Submission.find_by_patent_id_and_submitter_id(@patent.id,@bill.user.id)
 @anteil=sprintf('%.2f', @patent.preis(@submission)).gsub('.',',')

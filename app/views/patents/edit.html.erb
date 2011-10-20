@@ -1,2 +1,4 @@
 <%@page_title="Patent editieren"%>
-<%= render :partial => 'ep', :locals =>{:action =>'update', :buttonlabel => "Update"} %>
+<%form_for(@patent) do |f| %>
+  <%= render :partial => '/partials/patent_edit' %>
+<%end%>

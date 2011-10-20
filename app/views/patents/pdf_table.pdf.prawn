@@ -16,7 +16,7 @@ items=@patents.map do |item|
 truncate(item.submitter_names_with_anteile, :length=>290),
 truncate (item.titel,:length=>28),
 (item.status_in_string),
-item.lizenzbereitschaft?
+item.lizenzbereitschaft_erklärt?
 ]
 end
 colors=["BDBDBD"]

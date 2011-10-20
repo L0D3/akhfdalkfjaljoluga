@@ -1,4 +1,4 @@
-render :partial=>'letter/rechnungsrahmen.pdf.prawn',:locals=>{:ppdf=>pdf}
+render :partial=>'letter/rechnungsrahmen.pdf.prawn',:locals=>{:ppdf=>pdf,:rechnungsdatum=>@rechnungsdatum}
 brief_schriftgröße(pdf)
 
 betreff2 (pdf,"<u>"+@rechnungsnummer+"</u>
@@ -8,9 +8,11 @@ Anmelder: "+@user+'
 
 
 rechnung(pdf,
-"mit Schreiben vom "+@datum.strftime("%d.%m.%Y")+" haben Sie uns beauftragt, für Ihre obige Patentanmeldung die "+@patent.jahresgebühr+". Jahresgebühr in Höhe von "+@anteil+" €  beim zuständigen Patentamt einzuzahlen.
+"mit Schreiben vom "+@datum.strftime("%d.%m.%Y")+" haben Sie uns beauftragt, für Ihre obige Patentanmeldung die "+@patent.jahresgebühr+". Jahresgebühr in Höhe von "+@patent.preis(nil)+" €  beim zuständigen Patentamt einzuzahlen.
 
-Wir werden die Einzahlung fristgemäß vornehmen.",
+Wir werden die Einzahlung fristgemäß vornehmen.
+
+",
 
 "An diesem Schutzrecht besteht folgende Anteilssituation, nach der sich auch die Kostentragungspflicht regelt:",
 "Zur Erstattung unserer Auslagen bitten wir um Überweisung von "+@anteil+" € unter Angabe unseres Zeichens und der Rechnungsnummer "+@rechnungsnummer+" auf unser untenstehendes Konto.
