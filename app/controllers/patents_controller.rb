@@ -125,17 +125,18 @@ class PatentsController < ApplicationController
   # PUT /patents/1.xml
   def update
     @patent = Patent.find(params[:id])
-
     respond_to do |format|
       if @patent.update_attributes(params[:patent])
-        flash[:notice] = 'Patent was successfully updated.'
-        format.html {render :action =>"edit"}
-          format.html { redirect_to(@patent) }
+        format.html { redirect_to(patent_path(@patent), :notice => 'Patent was successfully updated.') }
         format.xml  { head :ok }
+      else
+        flash[:notice] = 'Error!'
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @patent.errors, :status => :unprocessable_entity }
       end
     end
-  end
-
+  end  
+  
   def destroy
     @patent = Patent.find(params[:id])
     @patent.destroy

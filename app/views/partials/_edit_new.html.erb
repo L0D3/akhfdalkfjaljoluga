@@ -1,12 +1,16 @@
 <div id="auswahlmenu">
   <b>Bearbeiten</b>   <br />
   <%if buttonlabel=='update'%> 
-  <li>  <%= link_to 'Back', patent_path(@patent) -%></li>
-<%else%>
-  <li>  <%= link_to 'Back', patents_path -%></li>
-<%end%>
+    <%if @patent.patent_type=='Patent'%>
+      <li>  <%= link_to 'Back', patent_path(@patent) -%></li>
+    <%else%>
+      <li>  <%= link_to 'Back', petty_patent_path(@patent) -%></li>
+    <%end%>
+  <%else%>
+    <li>  <%= link_to 'Back', patents_path -%></li>
+  <%end%>
   <li><%= submit_tag  "Speichern"%></li>
- </div>
+</div>
 <div id="mitte">
 
 <%= error_messages_for :patent%>

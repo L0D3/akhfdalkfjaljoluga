@@ -1,6 +1,4 @@
-<h1>Editing petty_patent</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @petty_patent %> |
-<%= link_to 'Back', petty_patents_path %>
+<%@page_title="Patent editieren"%>
+<%=form_tag petty_patent_path(@patent.id), :id=>"edit_patent_#{@patent.id}", :method=>:put do  %>
+  <%= render :partial => '/partials/patent_edit' %>
+<%end%>

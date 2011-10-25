@@ -38,7 +38,9 @@ class PettyPatentsController < ApplicationController
 
   # GET /petty_patents/1/edit
   def edit
-    @petty_patent = PettyPatent.find(params[:id])
+    @users=User.find(:all)
+    @patent = Patent.find(params[:id])
+    @nation=@patent.nationalität
   end
 
   # POST /petty_patents
@@ -59,12 +61,11 @@ class PettyPatentsController < ApplicationController
   # PUT /petty_patents/1
   # PUT /petty_patents/1.xml
   def update
-    @petty_patent = PettyPatent.find(params[:id])
+    @petty_patent = Patent.find(params[:id])
 
     respond_to do |format|
-      if @petty_patent.update_attributes(params[:petty_patent])
-          flash[:notice] = 'Patent was successfully created.'
-        format.html { redirect_to(@petty_patent, :notice => 'Petty patent was successfully updated.') }
+      if @petty_patent.update_attributes(params[:patent])
+        format.html { redirect_to(petty_patent_path(@petty_patent), :notice => 'Petty patent was successfully updated.') }
         format.xml  { head :ok }
       else
         flash[:notice] = 'Error!'
