@@ -1,9 +1,9 @@
-<% form_for(fee) do |f| %>
+<%= form_for(fee) do |f| %>
   <%= f.error_messages %>
   <p>
   <u><b><%= h  fee.country %></b></u>
   </p>
-  <table>
+  <table class="mytable">
     <tr>
       <th>1</th>
       <th>2</th>
@@ -55,7 +55,7 @@
   </table>
 
   <%= button_to'Löschen', fee, :confirm => 'Wirklich löschen?', :method => :delete %>
-  <%= f.submit "editieren"%> 
+  <%= link_to"editieren", edit_fee_path(fee)%>
     <br/>
 <% end %>
 

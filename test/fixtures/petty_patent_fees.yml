@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  year_4: 1
+  year_7: 1
+  year_9: 1
+
+two:
+  year_4: 1
+  year_7: 1
+  year_9: 1

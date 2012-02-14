@@ -1,4 +1,6 @@
-<%title "Gebühren"%>
+<h1> Gebrauchsmuster</h1>
+<%=link_to 'Neues Gebrauchsmuster',new_petty_patent_fee_path%>
+<%=render :partial=>@pettypatentfees%>
+<h1> Patente</h1>
+<%= link_to 'Neues Patent', new_fee_path %>
 <%=render :partial=>@fees%>
-
-<%= link_to 'Neue Nation', new_fee_path %>

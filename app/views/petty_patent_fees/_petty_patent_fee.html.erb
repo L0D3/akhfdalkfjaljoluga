@@ -1,0 +1,21 @@
+<% form_for(petty_patent_fee) do |f| %>
+  <%= f.error_messages %>
+  <u><b><%= h  petty_patent_fee.country %></b></u>
+  <table class="mytable">
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+    <tr>
+      <td><%=f.text_field :year_4,:size=>5%></td>
+      <td><%=f.text_field :year_7,:size=>5%></td>
+      <td><%=f.text_field :year_9,:size=>5%></td>
+    </tr>
+  </table>
+
+  <%= button_to'Löschen',petty_patent_fee, :confirm => 'Wirklich löschen?', :method => :delete %>
+  <%=link_to "editieren" ,edit_petty_patent_fee_path(petty_patent_fee)%>
+    <br/>
+<% end %>
+

@@ -3,7 +3,7 @@ class FeesController < ApplicationController
   # GET /fees.xml
   def index
     @fees = Fee.find(:all)
-
+    @pettypatentfees= PettyPatentFee.find(:all)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @fees }

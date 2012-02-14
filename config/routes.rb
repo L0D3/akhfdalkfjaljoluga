@@ -18,6 +18,7 @@ PatverV1::Application.routes.draw do
     end
   end
   resources :fees
+  resources :petty_patent_fees
   resources :users do
     collection do
       get :edit_individually

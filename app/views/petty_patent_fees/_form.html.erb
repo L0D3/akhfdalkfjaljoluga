@@ -1,0 +1,27 @@
+<% form_for(@petty_patent_fee) do |f| %>
+  <%= f.error_messages %>
+  <p>
+  <%= f.label "Nation"%>
+<%- if buttonlabel=="update"%>
+  <%= f.text_field  :country, :disabled=>true %>
+<%else%>
+  <%= f.text_field  :country %>
+<%end%>
+  </p>
+  <b>Jahresgebühren:</b>
+  <br />
+  <table>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+    <tr>
+      <td><%=f.text_field :year_4,:size=>5%></td>
+      <td><%=f.text_field :year_7,:size=>5%></td>
+      <td><%=f.text_field :year_9,:size=>5%></td>
+    </tr>
+  </table>
+    <%= f.submit buttonlabel %>
+<% end %>
+

@@ -1,4 +1,4 @@
-== Welcome to Rails
+c= Welcome to Rails
 
 <%=text_field_with_auto_complete :search, :status_eq, {},{:url=>users_path(:format=>:js),:method=>:get, :tokens=>';',:param_name=>'search'}%>
 Rails is a web-application framework that includes everything needed to create
